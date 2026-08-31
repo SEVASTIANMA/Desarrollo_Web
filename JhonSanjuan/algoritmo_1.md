@@ -18,3 +18,18 @@ Algoritmo CargarVector
 Definir numeros Como Entero
 Definir i Como Entero
 Dimension numeros[5]
+Mostrar los datos de un vector
+Algoritmo MostrarVector
+Definir numeros Como Entero
+Definir i Como Entero
+Dimension numeros[5]
+
+Para i = 1 Hasta 5 Con Paso 1
+    Escribir "Ingrese el numero ", i
+    Leer numeros[i]
+FinPara
+
+Para i = 1 Hasta 5 Con Paso 1
+    Escribir "Posicion ", i, ": ", numeros[i]
+FinPara
+FinAlgoritmo
