@@ -18,7 +18,21 @@ Algoritmo CargarVector
 Definir numeros Como Entero
 Definir i Como Entero
 Dimension numeros[5]
+Mostrar los datos de un vector
+Algoritmo MostrarVector
+Definir numeros Como Entero
+Definir i Como Entero
+Dimension numeros[5]
 
+Para i = 1 Hasta 5 Con Paso 1
+    Escribir "Ingrese el numero ", i
+    Leer numeros[i]
+FinPara
+
+Para i = 1 Hasta 5 Con Paso 1
+    Escribir "Posicion ", i, ": ", numeros[i]
+FinPara
+FinAlgoritmo
 Operaciones comunes con vectores
 Sumar todos los elementos
 Definir suma Como Entero
@@ -28,15 +42,4 @@ Para i = 1 Hasta 5 Con Paso 1
     suma <- suma + numeros[i]
 FinPara
 
-Escribir "La suma es: ", suma 
-Buscar el mayor valor
-Definir mayor Como Entero
-mayor <- numeros[1]
-
-Para i = 2 Hasta 5 Con Paso 1
-    Si numeros[i] > mayor Entonces
-        mayor <- numeros[i]
-    FinSi
-FinPara
-
-Escribir "El mayor valor es: ", mayor
+Escribir "La suma es: ", suma
