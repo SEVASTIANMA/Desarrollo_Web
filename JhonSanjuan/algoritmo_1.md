@@ -33,3 +33,13 @@ Para i = 1 Hasta 5 Con Paso 1
     Escribir "Posicion ", i, ": ", numeros[i]
 FinPara
 FinAlgoritmo
+Operaciones comunes con vectores
+Sumar todos los elementos
+Definir suma Como Entero
+suma <- 0
+
+Para i = 1 Hasta 5 Con Paso 1
+    suma <- suma + numeros[i]
+FinPara
+
+Escribir "La suma es: ", suma
