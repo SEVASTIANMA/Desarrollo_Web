@@ -18,25 +18,3 @@ Algoritmo CargarVector
 Definir numeros Como Entero
 Definir i Como Entero
 Dimension numeros[5]
-
-Operaciones comunes con vectores
-Sumar todos los elementos
-Definir suma Como Entero
-suma <- 0
-
-Para i = 1 Hasta 5 Con Paso 1
-    suma <- suma + numeros[i]
-FinPara
-
-Escribir "La suma es: ", suma 
-Buscar el mayor valor
-Definir mayor Como Entero
-mayor <- numeros[1]
-
-Para i = 2 Hasta 5 Con Paso 1
-    Si numeros[i] > mayor Entonces
-        mayor <- numeros[i]
-    FinSi
-FinPara
-
-Escribir "El mayor valor es: ", mayor
