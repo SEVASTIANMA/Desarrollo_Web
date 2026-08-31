@@ -7,3 +7,17 @@ Si simple
 Si condicion Entonces
     // instrucciones
 FinSiS
+
+Ejemplo 2: Si - SiNo
+Algoritmo EjemploSiSiNo
+Definir numero Como Entero
+
+Escribir "Ingrese un numero: "
+Leer numero
+
+Si numero Mod 2 = 0 Entonces
+    Escribir "El numero es par"
+SiNo
+    Escribir "El numero es impar"
+FinSi
+FinAlgoritmo
