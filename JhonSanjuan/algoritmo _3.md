@@ -21,3 +21,12 @@ SiNo
     Escribir "El numero es impar"
 FinSi
 FinAlgoritmo
+
+Si - SiNo - Si anidado (else if)
+Si condicion1 Entonces
+    // instrucciones
+SiNo Si condicion2 Entonces
+    // instrucciones
+SiNo
+    // instrucciones
+FinSi
