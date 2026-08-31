@@ -8,4 +8,16 @@ Repite el bloque mientras la condición sea verdadera. La condición se evalúa 
 
 Mientras condicion Hacer
     // instrucciones
+FinMientras 
+
+Ejemplo:
+
+Algoritmo EjemploMientras
+Definir contador Como Entero
+contador <- 1
+
+Mientras contador <= 5 Hacer
+    Escribir "Contador: ", contador
+    contador <- contador + 1
 FinMientras
+FinAlgoritmo
