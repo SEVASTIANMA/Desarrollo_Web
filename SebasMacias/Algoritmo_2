@@ -1,0 +1,52 @@
+Algoritmo Calcular_Comision_Total
+    Definir N, i Como Entero
+    Definir Venta, Comision, Comision_Total Como Real
+    
+    Escribir "Ingrese la cantidad de ventas (N):"
+    Leer N
+    
+    Comision_Total <- 0 
+    
+    Para i <- 1 Hasta N Con Paso 1 Hacer
+        Escribir "Ingrese el valor de la venta ", i, ":"
+        Leer Venta
+        
+        Si Venta > 50000 Entonces
+            Comision <- Venta * 0.07
+        Sino
+            Comision <- Venta * 0.05
+        FinSi
+        
+        Comision_Total <- Comision_Total + Comision
+    FinPara
+    
+    Escribir "La comisi�n total por las ", N, " ventas es: $", Comision_Total
+FinAlgoritmo
+
+# Explicación del Algoritmo: Calcular_Comision_Total
+
+Este algoritmo está escrito en pseudocódigo y tiene como objetivo **calcular la comisión total acumulada** que le corresponde a un vendedor a partir de un número determinado de ventas ($N$). El programa aplica un porcentaje de comisión variable (un bono del 7% o un estándar del 5%) dependiendo del monto de cada venta individual.
+
+---
+
+## Estructura y Funcionamiento del Código
+
+### 1. Definición e Inicialización de Variables
+El programa comienza declarando formalmente el tipo de datos que va a utilizar para optimizar el uso de memoria:
+* **Variables Enteras (`N`, `i`):** Utilizadas para el control de ciclos y conteo de transacciones.
+* **Variables Reales (`Venta`, `Comision`, `Comision_Total`):** Utilizadas para admitir valores con decimales (dinero).
+* **Inicialización:** Se establece el acumulador `Comision_Total <- 0` para asegurar que el conteo comience limpio.
+
+### 2. Configuración del Límite de Ventas
+El algoritmo solicita al usuario ingresar cuántas ventas se van a procesar en total. Este valor numérico se guarda en la variable `N` y define la duración exacta del proceso.
+
+### 3. Ciclo de Procesamiento y Reglas de Negocio (Bucle Para)
+El programa ejecuta un bucle que se repite exactamente `N` veces. En cada iteración `i`, realiza las siguientes acciones:
+1. Solicita y lee el monto de la venta actual (`Venta`).
+2. **Evaluación de la Comisión (Estructura Condicional):** Aplica una regla condicional para determinar la tasa de ganancia:
+   * **Si la venta supera los $50,000 (`Venta > 50000`):** Se calcula una comisión alta del **7%** (`Venta * 0.07`).
+   * **Si la venta es igual o menor a $50,000 (`Sino`):** Se calcula una comisión estándar del **5%** (`Venta * 0.05`).
+3. **Acumulación:** La comisión calculada en esa iteración se suma inmediatamente al contador histórico mediante la operación `Comision_Total <- Comision_Total + Comision`.
+
+### 4. Despliegue de Resultados
+Una vez que el ciclo procesa las `N` ventas, el bucle finaliza. El algoritmo imprime un mensaje final en la pantalla que indica al usuario el monto total acumulado de las comisiones junto con la cantidad de ventas evaluadas.

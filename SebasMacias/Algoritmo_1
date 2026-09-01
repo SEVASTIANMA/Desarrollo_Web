@@ -1,0 +1,69 @@
+Algoritmo Peronas_Edificio
+	
+	Total_Mayores <- 0
+	Total_Menores <- 0
+	
+	Para Dep <-1 Hasta 10 Con Paso 1 hacer 
+		Escribir "Departamento" Dep ""
+		Escribir "Cantidad de personas mayores de edad (0 si esta vacio)" 
+		Leer Mayor 
+		Escribir "Cantidad de personas menores de edad (0 si esta vacio)"
+		Leer Menor
+		
+		Total_Mayores <- Total_Mayores + Mayor
+		Total_Menores <- Total_Menores + Menor 
+	FinPara
+	
+	Total_personas <- Total_Mayores + Total_Menores
+	Escribir ""
+	Escribir "Resultados"
+	Escribir "El total de personas que vive en el edificio es:", Total_personas
+	
+	Si Total_Mayores > Total_Menores Entonces
+		Escribir "Viven mas personas Mayores de edad. Total:", Total_Mayores
+		Sino
+			Si Total_Menores > Total_Mayores Entonces
+				Escribir "Viven mas personas Menores de edad. Total:", Total_Menores
+			SiNo
+				Escribir "Hay la misma cantidad de Menores y Mayores. Total:", Total_personas
+			FinSi
+	FinSi
+	
+FinAlgoritmo
+
+# Explicación del Algoritmo: Personas_Edificio
+
+Este algoritmo está escrito en pseudocódigo y tiene como objetivo **censar y analizar la población de un edificio** de 10 departamentos. El programa clasifica a los habitantes en mayores y menores de edad para calcular el total global y determinar qué grupo demográfico es mayoritario.
+
+---
+
+## Estructura y Funcionamiento del Código
+
+### 1. Inicialización de Variables
+El programa comienza configurando dos variables acumuladoras en cero. Estas variables se encargan de almacenar el conteo total a lo largo de la ejecución:
+* `Total_Mayores`: Registra la suma acumulada de adultos.
+* `Total_Menores`: Registra la suma acumulada de menores de edad.
+
+### 2. Ciclo de Recopilación de Datos (Bucle Para)
+El algoritmo ejecuta un bucle definido que se repite exactamente **10 veces** (una iteración por cada departamento, desde el 1 hasta el 10). En cada ciclo se realizan las siguientes acciones:
+1. Muestra en pantalla el número del departamento actual.
+2. Solicita al usuario ingresar la cantidad de personas mayores de edad y guarda el dato en la variable temporal `Mayor`.
+3. Solicita ingresar la cantidad de personas menores de edad y guarda el dato en la variable temporal `Menor`.
+4. Suma los valores ingresados directamente a los acumuladores globales mediante las operaciones:
+   * `Total_Mayores <- Total_Mayores + Mayor`
+   * `Total_Menores <- Total_Menores + Menor`
+
+### 3. Cálculo de Resultados Globales
+Una vez procesados los 10 departamentos, el ciclo finaliza y el programa calcula la población total del edificio sumando ambos acumuladores:
+* `Total_personas <- Total_Mayores + Total_Menores`
+
+Inmediatamente después, el programa imprime en pantalla el total general de habitantes.
+
+### 4. Evaluación de Tendencia Demográfica (Condicionales Anidados)
+Por último, el algoritmo utiliza estructuras condicionales `Si-Entonces-Sino` para comparar el volumen de ambos grupos y determinar el resultado final bajo tres escenarios posibles:
+
+* **Escenario A (Si `Total_Mayores > Total_Menores`):** Informa que viven más personas mayores de edad y despliega su cantidad total.
+* **Escenario B (Si `Total_Menores > Total_Mayores`):** Informa que viven más personas menores de edad y despliega su cantidad total.
+* **Escenario C (Sino / Empate):** Informa que hay la misma cantidad de menores y mayores. 
+
+*Nota técnica: En caso de empate, el algoritmo muestra por pantalla la variable `Total_personas` (la población completa del edificio) en lugar de mostrar el valor individual de uno de los grupos.*
