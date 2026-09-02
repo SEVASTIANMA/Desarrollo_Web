@@ -1,0 +1,58 @@
+Algoritmo Encontrar_Precio_Mayor
+    Definir N, i Como Entero
+    Definir Precio, Precio_Mayor Como Real
+    
+    Escribir "Ingrese la cantidad de art�culos (N):"
+    Leer N
+    
+    Si N <= 0 Entonces
+        Escribir "La cantidad de art�culos debe ser mayor a 0."
+    Sino
+        Escribir "Ingrese el precio del art�culo 1:"
+        Leer Precio
+	
+        precio_Mayor <- precio
+        
+        Para i <- 2 Hasta N Con Paso 1 Hacer
+            Escribir "Ingrese el precio del art�culo ", i, ":"
+            Leer Precio
+            
+            Si Precio > Precio_Mayor Entonces
+                Precio_Mayor <- precio
+            FinSi
+        FinPara
+        
+        Escribir "El precio del art�culo mayor es: $", Precio_Mayor
+    FinSi
+FinAlgoritmo
+
+# Explicación del Algoritmo: Encontrar_Precio_Mayor
+
+Este algoritmo está escrito en pseudocódigo y tiene como objetivo **identificar el precio más alto** dentro de un grupo de artículos ($N$). El programa incluye una validación inicial de seguridad y utiliza una estructura secuencial lógica para encontrar el valor máximo optimizando el uso de recursos.
+
+---
+
+## Estructura y Funcionamiento del Código
+
+### 1. Definición de Variables
+El programa declara formalmente sus variables para estructurar el tipo de datos:
+* **Variables Enteras (`N`, `i`):** Utilizadas para definir la cantidad de artículos y controlar las repeticiones del ciclo.
+* **Variables Reales (`Precio`, `Precio_Mayor`):** Diseñadas para almacenar valores numéricos con decimales (moneda).
+
+### 2. Validación Inicial de Seguridad
+El algoritmo solicita al usuario la cantidad total de artículos a evaluar (`N`) y ejecuta un filtro de control:
+* **Si `N` es menor o igual a 0:** El sistema muestra un mensaje de error y finaliza la ejecución de inmediato para evitar fallos lógicos.
+* **Si `N` es válido (mayor a 0):** El programa procede con la estructura principal dentro del bloque `Sino`.
+
+### 3. Establecimiento del Caso Base
+Antes de iniciar cualquier ciclo, el programa solicita obligatoriamente el precio del **primer artículo** y lo asigna directamente como el `Precio_Mayor`. Esto sirve como punto de referencia inicial para las comparaciones posteriores.
+
+### 4. Ciclo de Comparación Global (Bucle Para)
+Si el usuario ingresó más de un artículo ($N \ge 2$), el algoritmo inicia un bucle que recorre desde el elemento `2` hasta `N`. En cada vuelta del ciclo se realizan las siguientes acciones:
+1. Solicita en pantalla y lee el costo del artículo actual (`Precio`).
+2. **Evaluación de Máximos (Estructura Condicional):** Compara el precio recién ingresado contra el valor más alto registrado hasta ese momento:
+   * **Si `Precio > Precio_Mayor`:** El registro se actualiza y la variable `Precio_Mayor` adopta este nuevo valor más alto.
+   * **Si es menor o igual:** No se realiza ningún cambio y el algoritmo continúa con la siguiente vuelta.
+
+### 5. Despliegue del Resultado
+Una vez finalizado el ciclo (tras procesar los $N$ artículos), el programa imprime en la consola un mensaje de salida que revela de manera exacta cuál fue el precio más alto detectado en todo el lote.
