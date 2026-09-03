@@ -15,7 +15,7 @@ La estrategia de validación de entradas se divide en tres capas principales:
 
 ### Ejemplo de Implementación Lógica (Pseudocódigo / Validación en Backend)
 
-```text
+
 FUNCION validarNombreUsuario(entrada):
     // 1. Verificar que no esté vacío
     SI entrada ES NULO O longitud(entrada) == 0 ENTONCES:
@@ -57,13 +57,13 @@ FUNCION validarNombreUsuario(entrada):
 
 ### Ejemplo de Implementación Lógica (Pseudocódigo / Backend)
 
-```text
+
 FUNCION sanitizarParaHTML(cadenaEntrada):
     // Si la entrada no es texto o está vacía, retornar cadena vacía
     SI cadenaEntrada ES NULO O longitud(cadenaEntrada) == 0 ENTONCES:
         RETORNAR ""
 
-    // Reemplazar caracteres especiales por entidades HTML seguras
+     Reemplazar caracteres especiales por entidades HTML seguras
     textoSeguro = reemplazar(cadenaEntrada, "&", "&amp;")
     textoSeguro = reemplazar(textoSeguro, "<", "&lt;")
     textoSeguro = reemplazar(textoSeguro, ">", "&gt;")
@@ -71,3 +71,15 @@ FUNCION sanitizarParaHTML(cadenaEntrada):
     textoSeguro = reemplazar(textoSeguro, "'", "&#x27;")
 
     RETORNAR textoSeguro
+
+  
+
+1. **Separación de Lógica y Datos:**
+   * La estructura de la consulta SQL se envía primero al motor de la base de datos para ser compilada.
+   * Los valores ingresados por el usuario se envían por separado como parámetros neutros, evitando la interpretación de caracteres especiales (como `' OR '1'='1`).
+
+2. **Prohibición de Concatenación Directa:**
+   * Nunca se deben construir consultas uniendo cadenas mediante operadores de texto (por ejemplo: `"SELECT * FROM usuarios WHERE id = " + inputUsuario`).
+
+---
+
