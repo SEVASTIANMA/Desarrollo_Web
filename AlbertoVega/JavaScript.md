@@ -10,5 +10,5 @@ A esta expansión en el entorno de ejecución se sumó el avance del estándar *
 * **Paradigma funcional:** Con funciones de primera clase, orden superior y métodos inmutables de arreglos (`map`, `filter`, `reduce`), el lenguaje adoptó un enfoque funcional más limpio y predecible.
 * **Modularidad nativa:** El soporte para módulos ES (`import`/`export`) estructuró el código en arquitecturas escalables y mantenibles.
 
-
+Aunque JavaScript no está exento de críticas —su comportamiento impredecible con la coerción de tipos e inconsistencias históricas motivaron el surgimiento de *supersets* como **TypeScript**—, su flexibilidad sigue siendo su mayor fortaleza. Apoyado por una comunidad global masiva y *frameworks* de vanguardia como React, Vue y Angular, JavaScript mantiene una posición dominante. De cara al futuro, lejos de quedar obsoleto, continúa expandiendo sus fronteras hacia el desarrollo móvil, la robótica y el aprendizaje automático, consolidándose como la herramienta más influyente en la creación de software web.
 
