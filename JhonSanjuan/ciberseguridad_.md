@@ -29,4 +29,45 @@ FUNCION validarNombreUsuario(entrada):
     SI NO coincideConPatron(entrada, "^[a-zA-Z0-9]+$") ENTONCES:
         RETORNAR Falso, "El formato contiene caracteres no permitidos"
         
-    RETORNAR Verdadero, "Entrada válida"
+    RETORNAR Verdadero, "Entrada válida" 
+    ### Puntos Clave para Cumplir el Criterio de Aceptación
+
+
+**Validar siempre en el servidor (Backend):** Aunque la validación en el cliente (HTML/JavaScript) mejora la experiencia de usuario, un atacante puede omitirla fácilmente. La validación del servidor es la única que garantiza seguridad real.
+* **Fallo seguro:** Si una entrada no cumple exactamente con las reglas definidas, el sistema debe rechazar el procesamiento por defecto y registrar el evento en los logs de auditoría sin exponer detalles técnicos al usuario.
+
+### Estrategia de Sanitización
+
+1. **Codificación de Entidades HTML (*HTML Entity Encoding*):**
+   * Transforma caracteres especiales con significado en HTML a sus equivalentes seguros antes de renderizarlos en el navegador. Esto evita la vulnerabilidad de **Cross-Site Scripting (XSS)**.
+   * *Ejemplo de conversión:*
+     * `<` se convierte en `&lt;`
+     * `>` se convierte en `&gt;`
+     * `"` se convierte en `&quot;`
+     * `'` se convierte en `&#x27;`
+     * `&` se convierte en `&amp;`
+
+2. **Limpieza o Eliminación de Etiquetas (*HTML Stripping*):**
+   * Remueve por completo etiquetas potencialmente peligrosas (como `<script>`, `<iframe>`, `onload=`, `onerror=`) si el campo no requiere formato HTML.
+
+3. **Uso de Librerías Especializadas:**
+   * Evitar el uso de expresiones regulares caseras para limpiar HTML complejo. Es recomendable utilizar componentes probados por la comunidad (como DOMPurify en JavaScript o Bleach en Python).
+
+---
+
+### Ejemplo de Implementación Lógica (Pseudocódigo / Backend)
+
+```text
+FUNCION sanitizarParaHTML(cadenaEntrada):
+    // Si la entrada no es texto o está vacía, retornar cadena vacía
+    SI cadenaEntrada ES NULO O longitud(cadenaEntrada) == 0 ENTONCES:
+        RETORNAR ""
+
+    // Reemplazar caracteres especiales por entidades HTML seguras
+    textoSeguro = reemplazar(cadenaEntrada, "&", "&amp;")
+    textoSeguro = reemplazar(textoSeguro, "<", "&lt;")
+    textoSeguro = reemplazar(textoSeguro, ">", "&gt;")
+    textoSeguro = reemplazar(textoSeguro, '"', "&quot;")
+    textoSeguro = reemplazar(textoSeguro, "'", "&#x27;")
+
+    RETORNAR textoSeguro
