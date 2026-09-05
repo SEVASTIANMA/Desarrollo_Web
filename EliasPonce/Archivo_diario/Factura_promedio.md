@@ -37,5 +37,4 @@ Algoritmo Factura_promedio
 		Escribir "TOTAL A PAGAR: -------- $", total
 		Escribir "PROMEDIO POR PRODUCTO:  $", promedio
 		Escribir "========================="
-
 FinAlgoritmo
