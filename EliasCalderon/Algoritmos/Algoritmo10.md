@@ -13,3 +13,15 @@ Este algoritmo evalúa si un número real es positivo o negativo mediante una es
    * **Bloque Verdadero**: Si la condición se cumple, se ejecuta la instrucción que muestra el mensaje `"Este numero es positivo"`.
    * **Bloque Falso (`SiNo`)**: Si el número es menor que cero, el flujo va por este camino y muestra el mensaje `"Este numero es negativo"`.
 4. **Fin del programa (`FinAlgoritmo`)**: Termina la ejecución del código.
+
+
+Algoritmo PosONeng
+		Definir num1 Como Real
+		Escribir 'Digite un numero'
+		Leer num1
+		Si num1 >= 0 Entonces
+			Escribir 'Este numero es positivo'
+		SiNo
+			Escribir 'Este numero es negativo'
+		FinSi
+FinAlgoritmo
