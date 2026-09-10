@@ -32,3 +32,24 @@ A continuación, se detallan las características generales de los países líde
     * **Especialización principal:** C / C++, Blockchain y Arquitectura de Software compleja.
     * **Dominio de inglés:** Nivel moderado.
     * **Fortalezas del entorno:** Sólida herencia académica en ciencias exactas y una alta resiliencia en ingeniería bajo condiciones de presión.
+## PARTE 2: Análisis Detallado por País (El Porqué)
+
+### 1. China
+* **¿Por qué destaca?** El sistema educativo chino prioriza las matemáticas avanzadas y las ciencias de la computación desde etapas escolares tempranas. En los desafíos globales, los desarrolladores chinos obtienen puntuaciones perfectas en **estructuras de datos y programación funcional**.
+* **Factores clave:** Su enorme mercado interno y empresas gigantes (como Tencent o Alibaba) obligan a los programadores a diseñar software preparado para manejar volúmenes de usuarios masivos y de alta concurrencia.
+
+### 2. Polonia
+* **¿Por qué destaca?** Polonia cuenta con una de las infraestructuras de educación técnica más eficientes de Europa, donde la programación se introduce en las escuelas primarias. Los desarrolladores polacos dominan habitualmente los rankings de **Java y algoritmos de backend**.
+* **Factores clave:** Combinan habilidades lógicas sobresalientes con una cultura de comunicación directa y un nivel de inglés corporativo excelente, lo que los convierte en la opción preferida para proyectos regulados de alta complejidad en Europa.
+
+### 3. Estados Unidos
+* **¿Por qué destaca?** Aunque los rankings de código puro varían debido al volumen masivo de su población de desarrolladores, EE. UU. sigue siendo imbatible en **innovación conceptual y arquitectura de sistemas de gran escala**. Es la cuna de los principales frameworks modernos.
+* **Factores clave:** El ecosistema de Silicon Valley y las universidades de la Ivy League atraen y moldean mentes enfocadas en crear productos globales, dominando tecnologías disruptivas como la **Inteligencia Artificial y la computación Cloud**.
+
+### 4. Suiza
+* **¿Por qué destaca?** Suiza traslada su histórica reputación de precisión relojera y bancaria directamente al software. Los ingenieros suizos lideran en **sistemas distribuidos, criptografía y bases de datos**.
+* **Factores clave:** Su sólida economía atrae al mejor talento global a centros de investigación avanzada (como el de Google en Zúrich). Sus programadores destacan por escribir código altamente optimizado, seguro y con bajas tasas de errores.
+
+### 5. Ucrania
+* **¿Por qué destaca?** Históricamente enfocado en la ingeniería de bajo nivel, el talento ucraniano es reconocido por resolver problemas matemáticos complejos. Son especialistas en **ciberseguridad, arquitectura en C/C++ y tecnologías Blockchain**.
+* **Factores clave:** Su cultura tecnológica está fuertemente orientada a resultados y a la resolución creativa de problemas bajo condiciones de alta presión, manteniéndose como un hub de ingeniería de élite a nivel mundial.
