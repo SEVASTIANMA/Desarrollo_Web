@@ -1,0 +1,8 @@
+void main() {
+  
+  String nombre = "Sevastian";
+  String edad = "24";
+
+  print("Hola, mi nombre es $nombre y tengo $edad años.");
+}
+
