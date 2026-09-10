@@ -1,0 +1,297 @@
+# BUCKET SORT
+
+---
+
+# 1. Concepto de Bucket Sort
+
+## ¿Qué es Bucket Sort?
+
+Bucket Sort es un algoritmo de ordenamiento basado en el principio de distribución. Su funcionamiento consiste en dividir los elementos de un conjunto de datos en varios grupos llamados *buckets* o *cubos*, de acuerdo con un rango determinado de valores.
+
+Una vez distribuidos los elementos, cada bucket se ordena por separado utilizando otro algoritmo de ordenamiento, como Insertion Sort. Finalmente, todos los buckets se combinan para obtener una lista completamente ordenada.
+
+Este algoritmo es especialmente eficiente cuando los datos están distribuidos de manera uniforme dentro de un rango conocido.
+
+### Características principales
+
+- Utiliza estructuras auxiliares llamadas buckets o cubos.
+- Distribuye los datos según rangos de valores.
+- Ordena cada bucket de manera independiente.
+- Puede alcanzar una complejidad cercana a **O(n)** en condiciones ideales.
+- Es muy eficiente cuando los datos presentan una distribución uniforme.
+
+---
+
+# 2. Funcionamiento del Algoritmo
+
+El proceso de Bucket Sort puede dividirse en cuatro etapas principales:
+
+### Paso 1: Crear los buckets
+
+Se crean varios buckets vacíos que servirán para almacenar temporalmente los elementos.
+
+### Paso 2: Distribuir los elementos
+
+Cada elemento del arreglo se coloca en el bucket correspondiente según su valor.
+
+### Paso 3: Ordenar cada bucket
+
+Una vez llenos los buckets, cada uno se ordena individualmente utilizando un algoritmo de ordenamiento adecuado.
+
+### Paso 4: Unir los buckets
+
+Finalmente, los buckets ya ordenados se combinan para obtener el arreglo ordenado completo.
+
+### Ejemplo simple
+
+**Arreglo original:**
+
+```text
+[29, 25, 3, 49, 9, 37, 21, 43]
+```
+
+**Después de aplicar Bucket Sort:**
+
+```text
+[3, 9, 21, 25, 29, 37, 43, 49]
+```
+
+Este resultado se obtiene distribuyendo los números en diferentes buckets, ordenándolos y luego reuniéndolos en un único arreglo.
+
+---
+
+# 3. Ejemplo Práctico
+
+Supongamos que se desea ordenar el siguiente conjunto de números decimales:
+
+```text
+[0.78, 0.17, 0.39, 0.26, 0.72, 0.94,
+ 0.21, 0.12, 0.23, 0.68]
+```
+
+## Creación de buckets
+
+Se crean diez buckets:
+
+```text
+B0 B1 B2 B3 B4 B5 B6 B7 B8 B9
+```
+
+## Distribución de los elementos
+
+```text
+B1 = [0.17, 0.12]
+B2 = [0.26, 0.21, 0.23]
+B3 = [0.39]
+B6 = [0.68]
+B7 = [0.78, 0.72]
+B9 = [0.94]
+```
+
+## Ordenamiento interno
+
+```text
+B1 = [0.12, 0.17]
+B2 = [0.21, 0.23, 0.26]
+B3 = [0.39]
+B6 = [0.68]
+B7 = [0.72, 0.78]
+B9 = [0.94]
+```
+
+## Resultado final
+
+```text
+[0.12, 0.17, 0.21, 0.23, 0.26,
+ 0.39, 0.68, 0.72, 0.78, 0.94]
+```
+
+Este ejemplo demuestra cómo Bucket Sort organiza los elementos utilizando la distribución en cubos antes de realizar el ordenamiento final.
+
+---
+
+# 4. Pseudocódigo
+
+El siguiente pseudocódigo representa de forma general el funcionamiento de Bucket Sort:
+
+```text
+Algoritmo BucketSort
+
+    Crear buckets vacíos
+
+    Para cada elemento del arreglo hacer
+        Colocar el elemento en su bucket correspondiente
+    Fin Para
+
+    Para cada bucket hacer
+        Ordenar el bucket
+    Fin Para
+
+    Unir todos los buckets ordenados
+
+    Mostrar arreglo ordenado
+
+Fin Algoritmo
+```
+
+Este procedimiento resume las acciones fundamentales del algoritmo: distribuir, ordenar y combinar.
+
+---
+
+# 5. Análisis de Complejidad
+
+La eficiencia de Bucket Sort depende en gran medida de cómo se distribuyen los datos dentro de los buckets.
+
+## Mejor caso
+
+Cuando los elementos se distribuyen uniformemente entre los buckets, la complejidad temporal es:
+
+```text
+O(n)
+```
+
+## Caso promedio
+
+Considerando una distribución relativamente equilibrada de los datos, la complejidad es:
+
+```text
+O(n + k)
+```
+
+Donde:
+
+- **n** = número de elementos.
+- **k** = número de buckets.
+
+## Peor caso
+
+Si todos los elementos terminan en un solo bucket, el algoritmo se comporta como el método utilizado para ordenar internamente dicho bucket y puede alcanzar:
+
+```text
+O(n²)
+```
+
+## Complejidad espacial
+
+Bucket Sort requiere memoria adicional para almacenar los buckets:
+
+```text
+O(n + k)
+```
+
+### Resumen
+
+Bucket Sort es muy eficiente cuando los datos están distribuidos uniformemente, pero su rendimiento disminuye si la mayoría de los elementos se concentran en pocos buckets.
+
+---
+
+# 6. Ventajas y Desventajas
+
+## Ventajas
+
+- Es muy rápido cuando los datos tienen una distribución uniforme.
+- Su funcionamiento es relativamente sencillo de comprender e implementar.
+- Puede alcanzar un tiempo de ejecución cercano a O(n).
+- Permite el procesamiento paralelo de buckets.
+- Ofrece un excelente rendimiento para grandes cantidades de datos numéricos.
+
+## Desventajas
+
+- Requiere memoria adicional para almacenar los buckets.
+- Su eficiencia depende directamente de la distribución de los datos.
+- Una mala elección de la cantidad de buckets puede afectar el rendimiento.
+- No es adecuado para todos los tipos de datos.
+- Puede volverse lento cuando muchos elementos terminan en el mismo bucket.
+
+---
+
+# 7. Comparación con Otros Algoritmos
+
+## Bucket Sort vs Quick Sort
+
+Quick Sort es uno de los algoritmos de ordenamiento más utilizados debido a su rapidez y eficiencia en aplicaciones generales.
+
+### Ventajas de Bucket Sort frente a Quick Sort
+
+- Puede alcanzar una complejidad cercana a O(n).
+- Es más rápido cuando los datos están distribuidos uniformemente.
+- Puede aprovechar el procesamiento paralelo.
+
+### Ventajas de Quick Sort frente a Bucket Sort
+
+- Requiere menos memoria adicional.
+- Funciona bien con cualquier distribución de datos.
+- No depende del conocimiento previo del rango de valores.
+
+### Conclusión
+
+Cuando los datos se encuentran uniformemente distribuidos y se conoce su rango, Bucket Sort suele ofrecer mejores resultados. Sin embargo, para aplicaciones generales, Quick Sort suele ser una opción más flexible.
+
+---
+
+## Bucket Sort vs Merge Sort
+
+Merge Sort utiliza la estrategia de división y conquista para ordenar los datos.
+
+### Ventajas de Bucket Sort frente a Merge Sort
+
+- Puede ser más rápido en condiciones ideales.
+- Su complejidad puede acercarse a O(n).
+
+### Ventajas de Merge Sort frente a Bucket Sort
+
+- Mantiene una complejidad garantizada de O(n log n).
+- Es estable y consistente en cualquier tipo de datos.
+- Su rendimiento no depende de la distribución de los elementos.
+
+### Conclusión
+
+Merge Sort ofrece mayor estabilidad y predictibilidad, mientras que Bucket Sort puede superar su rendimiento cuando los datos presentan una distribución uniforme.
+
+### Tabla comparativa
+
+| Característica | Bucket Sort | Quick Sort | Merge Sort |
+|---------------|------------|------------|------------|
+| Mejor caso | O(n) | O(n log n) | O(n log n) |
+| Caso promedio | O(n + k) | O(n log n) | O(n log n) |
+| Peor caso | O(n²) | O(n²) | O(n log n) |
+| Memoria adicional | O(n + k) | O(log n) | O(n) |
+| Estabilidad | Sí* | No | Sí |
+| Ideal para | Datos uniformes | Uso general | Grandes volúmenes de datos |
+
+\* Dependiendo de la implementación utilizada.
+
+---
+
+# 8. Aplicaciones Reales
+
+Bucket Sort tiene aplicaciones en diferentes áreas de la informática y el procesamiento de datos, especialmente cuando los valores se encuentran dentro de un rango conocido.
+
+### Algunas aplicaciones son:
+
+- Ordenamiento de calificaciones de estudiantes.
+- Clasificación de puntuaciones en videojuegos.
+- Procesamiento de imágenes digitales.
+- Organización de registros en bases de datos.
+- Análisis de grandes conjuntos de datos numéricos.
+- Aplicaciones de computación científica y estadística.
+
+Gracias a su eficiencia, Bucket Sort es una excelente opción cuando la distribución de los datos es relativamente uniforme.
+
+---
+
+# 9. Conclusiones
+
+Bucket Sort es un algoritmo de ordenamiento basado en la distribución de datos en cubos o buckets. Su principal ventaja es su capacidad de alcanzar tiempos de ejecución cercanos a O(n) cuando los datos están uniformemente distribuidos.
+
+Aunque requiere memoria adicional y depende de una adecuada distribución de los elementos, sigue siendo una de las técnicas más eficientes para escenarios específicos donde se conocen los rangos de los datos.
+
+El estudio de Bucket Sort permite comprender estrategias alternativas de ordenamiento y la importancia de elegir el algoritmo adecuado según las características de la información que se desea procesar.
+
+---
+
+# Bibliografía
+
+- Cormen, T., Leiserson, C., Rivest, R. y Stein, C. *Introduction to Algorithms*. MIT Press.
+- Weiss, M. *Data Structures and Algorithm Analysis*.
+- Goodrich, M., Tamassia, R. y Goldwasser, M. *Data Structures and Algorithms in Java*.
