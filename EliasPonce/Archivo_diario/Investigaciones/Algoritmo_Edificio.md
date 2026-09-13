@@ -78,3 +78,36 @@ Esta sección ejecuta el núcleo operativo del programa: la recolección de dato
         Escribir "" 
     FinPara
 ```
+# Algoritmo de Censo para Edificio de 10 Pisos - Parte 3: Reporte y Estadísticas
+
+La última etapa del programa se enfoca en el procesamiento de salida, extrayendo la información guardada en los arreglos para desplegarla en un formato limpio y legible.
+
+## Explicación de la Lógica y Componentes
+
+*   **Renderizado de Tabla:** Utiliza un ciclo rápido para recorrer nuevamente las dimensiones de los arreglos ya llenos, imprimiendo los datos tabulados fila por fila (Piso por Piso).
+*   **Impresión de Totales:** Expone las variables acumuladoras finales que resolvieron las métricas de todo el complejo habitacional.
+
+## Código PSeInt - Sección de Cierre
+
+```pseint
+    // 5. Presentación del reporte estructurado en pantalla
+    Escribir "=========================================================="
+    Escribir "              REPORTE DETALLADO DEL EDIFICIO              "
+    Escribir "=========================================================="
+    Escribir "Piso | Mayores Edad | Menores Edad | Total del Piso"
+    Escribir "----------------------------------------------------------"
+    
+    // Extracción secuencial de datos guardados en los vectores
+    Para i <- 1 Hasta 10 Con Paso 1 Hacer
+        Escribir "  ", i, "  |       ", mayoresPorPiso[i], "      |       ", menoresPorPiso[i], "      |       ", totalPorPiso[i]
+    FinPara
+    
+    // 6. Entrega de métricas globales consolidadas
+    Escribir "----------------------------------------------------------"
+    Escribir "RESUMEN FINAL DE LA ESTRUCTURA:"
+    Escribir ">> Total de mayores de edad en el edificio: ", totalMayoresEdificio
+    Escribir ">> Total de menores de edad en el edificio: ", totalMenoresEdificio
+    Escribir ">> Población total del edificio (10 pisos): ", totalGeneralEdificio
+    Escribir "=========================================================="
+FinAlgoritmo
+```
