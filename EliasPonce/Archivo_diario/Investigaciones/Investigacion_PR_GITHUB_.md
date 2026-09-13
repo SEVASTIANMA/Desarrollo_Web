@@ -68,3 +68,36 @@ Un **conflicto de merge** ocurre cuando dos desarrolladores modifican las mismas
     2. Trae los cambios más recientes de la rama principal: `git pull origin main`
     3. Abre los archivos conflictivos en tu editor de código. Verás marcas como `<<<<<<< HEAD` y `>>>>>>>`.
     4. Decide con qué código quedarte, borra las marcas de Git, guarda el archivo, haz un nuevo commit y súbelo (`git push`). El PR se actualizará automáticamente en GitHub.
+# Guía Avanzada de Pull Requests en GitHub - Parte 3: Automatización y Calidad
+
+Un Pull Request exitoso no termina cuando el código funciona; concluye cuando se integra de manera limpia y automatizada, respetando las buenas prácticas de la industria.
+
+---
+
+## 5. El Rol de CI/CD (Integración Continua) en un PR
+
+En entornos profesionales, los PRs están conectados a sistemas de **CI/CD** (como GitHub Actions). Al abrir o actualizar un PR, se ejecutan automáticamente los siguientes controles:
+
+*   **Linters:** Herramientas que analizan el código para asegurar que cumpla con las reglas de estilo y formato del equipo.
+*   **Pruebas Unitarias e Integrales (Tests):** Scripts que verifican que los cambios introducidos no rompan ninguna funcionalidad antigua.
+*   **Análisis de Seguridad:** Escáneres que buscan vulnerabilidades o contraseñas expuestas accidentalmente en el código.
+
+Si alguna de estas pruebas falla, el PR mostrará un estado en rojo y, por lo general, se bloqueará la integración hasta que el desarrollador solucione las alertas.
+
+---
+
+## 6. Los Tres Tipos de Merge (Cierre de un PR)
+
+Cuando el código es aprobado y las pruebas pasan, el PR está listo para fusionarse. GitHub ofrece tres formas principales de hacerlo:
+
+*   **Create a Merge Commit:** Fusiona todos los commits de tu rama en la rama principal, manteniendo el historial completo intacto. Es el método por defecto.
+*   **Squash and Merge:** Comprime todos tus commits individuales en **uno solo**. Es ideal para mantener el historial de la rama principal limpio y fácil de leer.
+*   **Rebase and Merge:** Aplica tus commits uno por uno directamente encima de la rama principal. Conserva un historial lineal sin crear un commit de fusión intermedio.
+
+---
+
+## 7. Checklist de Buenas Prácticas para el Éxito
+
+*   **PRs Atómicos (Pequeños):** Limita tus PRs a un solo propósito. Es preferible revisar tres PRs de 40 líneas que uno solo de 1,200 líneas.
+*   **Usa Plantillas (Templates):** Configura un archivo `.github/pull_request_template.md` para estandarizar la información que debe llenar el equipo al abrir un PR.
+*   **Autorevisión:** Sé el primero en revisar tu PR en la pestaña *Files Changed*. Elimina comentarios basura (`console.log`, `TODOs` olvidados) antes de pedir tiempo a tus compañeros.
