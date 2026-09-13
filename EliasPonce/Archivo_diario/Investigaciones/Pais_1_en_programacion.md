@@ -44,3 +44,25 @@ Este desplazamiento del eje técnico genera un impacto directo en cómo las empr
 La disponibilidad de millones de mentes programando en simultáneo redefine los costos de desarrollo de nuevos sistemas de software.
 La masificación de la programación en estas regiones también altera las tendencias de los lenguajes de programación más utilizados.
 En la parte final, se analizarán los lenguajes predominantes, el impacto de la IA y el panorama de América Latina.
+# Investigación Global: Las Superpotencias de la Programación (Parte 3)
+
+El ecosistema global de desarrolladores comparte un lenguaje técnico unificado que trasciende las fronteras geográficas tradicionales.
+Estudios globales de la comunidad como Stack Overflow confirman que **JavaScript** se mantiene como el lenguaje más utilizado.
+Su dominio se extiende en el desarrollo web y aplicaciones dinámicas, alcanzando una adopción cercana al **66% a nivel mundial**.
+Por su parte, **Python** registra los mayores incrementos de adopción debido al auge de la ciencia de datos y la IA.
+
+### Los Lenguajes que Dominan la Industria del Desarrollo de Software
+* **JavaScript / TypeScript:** Estándar absoluto para la creación de interfaces de usuario y arquitecturas modernas en la web.
+* **Python:** Lenguaje prioritario para el entrenamiento de modelos predictivos, automatizaciones e inteligencia artificial.
+* **Java / C#:** Pilares fundamentales para el software empresarial, arquitecturas de la banca e infraestructura crítica corporativa.
+
+La aparición de la **Inteligencia Artificial generativa** ha cambiado por completo la naturaleza diaria del trabajo del programador.
+Las herramientas de asistencia de código eliminan las tareas repetitivas de bajo valor e incrementan la velocidad de entrega.
+Esto permite que los programadores enfoquen sus esfuerzos en la lógica del negocio, la seguridad y el diseño arquitectónico.
+La IA no disminuye la demanda de desarrolladores, sino que eleva la exigencia hacia perfiles con mayor pensamiento analítico.
+
+Por otro lado, **América Latina** emerge con fuerza en el sector del desarrollo remoto o bajo modalidad de contratación *nearshore*.
+**Brasil** encabeza el listado regional de forma holgada con una comunidad sólida que supera los **6.8 millones de cuentas**.
+Países como Colombia, Argentina y México muestran tasas de crecimiento superiores al **30% anual** en captación de talento.
+Su alineación con las zonas horarias de Estados Unidos convierte a la región en un aliado estratégico clave para Occidente.
+El panorama global del software concluye así su transición hacia un modelo descentralizado, masivo, joven y altamente automatizado.
