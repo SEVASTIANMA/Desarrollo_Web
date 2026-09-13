@@ -31,3 +31,50 @@ Algoritmo DetalleEdificio
     Escribir "=================================================="
     Escribir ""
 ```
+# Algoritmo de Censo para Edificio de 10 Pisos - Parte 2: Entrada de Datos y Control
+
+Esta sección ejecuta el núcleo operativo del programa: la recolección de datos de manera secuencial para cada piso a través de estructuras de control repetitivas.
+
+## Explicación de la Lógica y Componentes
+
+*   **Ciclo Para (For):** Gobierna el flujo general para repetir el proceso exactamente 10 veces, mapeando la variable contador `i` con el número de piso correspondiente.
+*   **Estructura Repetir-Hasta Que (Do-While):** Funciona como un filtro de validación de datos. Si el usuario ingresa un número negativo de personas por error, el sistema detecta la anomalía, muestra una alerta y vuelve a exigir el número correcto hasta que este sea mayor o igual a cero.
+*   **Cálculo Intermedio:** En cada iteración calcula la suma interna del piso actual y añade estos valores a los totales acumulados del edificio completo.
+
+## Código PSeInt - Sección de Captura
+
+```pseint
+    // 4. Bucle principal para iterar piso por piso
+    Para i <- 1 Hasta 10 Con Paso 1 Hacer
+        Escribir "--- PISO ", i, " ---"
+        
+        // Control y validación para el ingreso de mayores de edad
+        Repetir
+            Escribir "Ingrese la cantidad de MAYORES de edad en este piso: "
+            Leer mayoresPorPiso[i]
+            Si mayoresPorPiso[i] < 0 Entonces
+                Escribir "Error: La cantidad no puede ser negativa."
+            FinSi
+        Hasta Que mayoresPorPiso[i] >= 0
+        
+        // Control y validación para el ingreso de menores de edad
+        Repetir
+            Escribir "Ingrese la cantidad de MENORES de edad en este piso: "
+            Leer menoresPorPiso[i]
+            Si menoresPorPiso[i] < 0 Entonces
+                Escribir "Error: La cantidad no puede ser negativa."
+            FinSi
+        Hasta Que menoresPorPiso[i] >= 0
+        
+        // Procesamiento matemático por cada ciclo
+        totalPorPiso[i] <- mayoresPorPiso[i] + menoresPorPiso[i]
+        
+        // Actualización en tiempo real de los totales generales
+        totalMayoresEdificio <- totalMayoresEdificio + mayoresPorPiso[i]
+        totalMenoresEdificio <- totalMenoresEdificio + menoresPorPiso[i]
+        totalGeneralEdificio <- totalGeneralEdificio + totalPorPiso[i]
+        
+        Escribir "Habitantes totales en el Piso ", i, ": ", totalPorPiso[i]
+        Escribir "" 
+    FinPara
+```
