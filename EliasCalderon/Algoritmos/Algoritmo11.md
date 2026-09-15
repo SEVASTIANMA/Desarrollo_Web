@@ -11,3 +11,15 @@ Este algoritmo tiene como objetivo solicitar números al usuario de forma repeti
    * **Incremento del contador**: La instrucción `contador = contador + 1` suma una unidad al total de números registrados cada vez que se pasa por el ciclo.
    * **Condición de parada**: El bucle se evalúa al final de cada iteración con `Hasta Que num < 0`. Si el número ingresado es menor a cero (negativo), el bucle se rompe. Si es cero o positivo, el ciclo vuelve a empezar.
 3. **Resultado final**: Fuera del bucle, la instrucción `Escribir 'Hay' contador 'numeros'` muestra en pantalla la cantidad total de números introducidos por el usuario durante la ejecución, incluyendo el número negativo que causó el cierre del programa.
+
+
+
+
+Algoritmo HastaNegativo
+	repetir
+		escribir 'digite numero'
+		Leer num
+		contador = contador + 1
+	Hasta Que num < 0
+	Escribir 'Hay' contador 'numeros'
+FinAlgoritmo
