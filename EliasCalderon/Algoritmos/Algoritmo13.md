@@ -29,3 +29,16 @@ Si ingresamos A = 14 y B = 4:
 * **Termino:** ¿2 es mayor o igual que 4? No. El ciclo se detiene.
 
 **Salida en pantalla:** `El cociente es 3 y el residuo es: 2`
+
+
+
+Algoritmo DivisioNN
+	Escribir 'Digite los numeros a dividir: '
+	Leer A, B
+	cociente <- 0
+	mientras A >= B
+		A <- A - B
+		cociente <- cociente + 1
+	FinMientras
+	Escribir 'El cociente es ' cociente ' y el residuo es: ' A
+FinAlgoritmo
