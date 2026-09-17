@@ -39,3 +39,22 @@ Si el usuario ingresa el número **1234**:
   * `numero0` = Trunc(1 / 10) = `0`
 
 El bucle termina porque `numero0` ya no es mayor que 0. El resultado final en pantalla es: **4321**.
+
+
+
+Algoritmo InvertirNumero
+	Escribir "Digite su numero del 0 al 9.999: "
+	Leer numero0
+	
+	Escribir Sin Saltar "El numero al rev�s es: "
+	Si numero0 = 0 Entonces
+		Escribir 0
+	Sino
+		Mientras numero0 > 0 Hacer
+			digito = numero0 % 10
+			Escribir Sin Saltar digito
+			numero0 = Trunc(numero0 / 10)
+		FinMientras
+		Escribir ""
+	FinSi
+FinAlgoritmo
