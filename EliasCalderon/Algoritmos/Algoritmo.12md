@@ -1,0 +1,41 @@
+# Explicación del Algoritmo: Invertir Número
+
+Este algoritmo solicita al usuario un número entero y lo muestra en pantalla con sus dígitos en orden inverso (al revés). Está escrito en pseudocódigo compatible con herramientas como **PSeInt**.
+
+## Paso a Paso del Funcionamiento:
+
+1. **Entrada de Datos:**
+   * Muestra el mensaje `"Digite su numero del 0 al 9.999: "`.
+   * Guarda el valor introducido por el usuario en la variable `numero0`.
+
+2. **Caso Especial (Si el número es 0):**
+   * Evalúa la condición `Si numero0 = 0`.
+   * Si es verdadero, simplemente escribe `0`, ya que el inverso de cero es cero, y el programa finaliza ahí.
+
+3. **Bucle de Inversión (Para números mayores a 0):**
+   * Si el número es mayor que cero, entra en un ciclo `Mientras numero0 > 0 Hacer`.
+   * **Obtener el último dígito:** Ejecuta `digito = numero0 % 10`. El operador `%` (módulo) obtiene el residuo de dividir el número entre 10, lo que equivale a aislar el último dígito del número.
+   * **Mostrar el dígito:** Ejecuta `Escribir Sin Saltar digito`, imprimiendo ese residuo inmediatamente en la pantalla uno al lado del otro.
+   * **Eliminar el último dígito:** Ejecuta `numero0 = Trunc(numero0 / 10)`. Divide el número entre 10 y la función `Trunc` elimina los decimales, "recortando" el dígito que ya se imprimió.
+   * El ciclo se repite hasta que la variable `numero0` se reduce a `0`.
+
+---
+
+## Ejemplo de Ejecución Práctica
+
+Si el usuario ingresa el número **1234**:
+
+* **Vuelta 1:** 
+  * `digito` = 1234 % 10 = **4** (Se imprime `4`)
+  * `numero0` = Trunc(1234 / 10) = `123`
+* **Vuelta 2:** 
+  * `digito` = 123 % 10 = **3** (Se imprime `3` al lado del 4 \(\rightarrow\) `43`)
+  * `numero0` = Trunc(123 / 10) = `12`
+* **Vuelta 3:** 
+  * `digito` = 12 % 10 = **2** (Se imprime `2` al lado del 3 \(\rightarrow\) `432`)
+  * `numero0` = Trunc(12 / 10) = `1`
+* **Vuelta 4:** 
+  * `digito` = 1 % 10 = **1** (Se imprime `1` al lado del 2 \(\rightarrow\) `4321`)
+  * `numero0` = Trunc(1 / 10) = `0`
+
+El bucle termina porque `numero0` ya no es mayor que 0. El resultado final en pantalla es: **4321**.
