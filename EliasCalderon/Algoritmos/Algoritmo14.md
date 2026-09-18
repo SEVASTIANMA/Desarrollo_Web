@@ -35,3 +35,26 @@ Cada vez que el usuario introduce un número positivo, se ejecutan las siguiente
   Mostrando en la pantalla la cantidad exacta de números positivos que se lograron contabilizar antes de salir.
 
 
+Algoritmo Contador
+	Escribir '==========================='
+	Escribir '     Digite un numero'
+	Escribir '==========================='
+	Leer num
+	cont <- 0
+	
+	Mientras num > 0 Hacer
+		cont = cont + 1
+		
+		Escribir 'Digite un numero'
+		Leer num
+		
+		si num < 0 Entonces
+			
+			Escribir 'Numero negativo'
+		FinSi
+		
+		
+	FinMientras
+	Escribir 'valores positivos totales digitados: ' cont
+	
+FinAlgoritmo
