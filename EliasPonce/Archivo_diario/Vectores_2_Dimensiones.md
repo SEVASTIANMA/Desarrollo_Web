@@ -23,3 +23,14 @@ $$|\vec{R}| = \sqrt{R_x^2 + R_y^2}$$
 3. Calcular la raíz cuadrada: $\sqrt{34} \approx 5.83$
 
 **Resultado:** La distancia en línea recta desde el puerto es de **$5.83$ kilómetros**.
+# Ejercicio de Vectores 2D - Parte 3: Dirección del Vector
+
+Para conocer la orientación exacta del barco, calculamos el ángulo $\theta$ que forma el vector resultante $\vec{R} = (5, 3)$ con respecto al eje positivo de las $x$ (el Este), usando la **tangente inversa**:
+
+$$\theta = \tan^{-1}\left(\frac{R_y}{R_x}\right)$$
+
+### Pasos del cálculo:
+1. Dividir la componente $y$ entre la componente $x$: $\frac{3}{5} = 0.6$
+2. Aplicar la tangente inversa: $\tan^{-1}(0.6) \approx 30.96^\circ$
+
+**Resultado:** El barco se encuentra en una dirección de **$30.96^\circ$ al noreste**.
