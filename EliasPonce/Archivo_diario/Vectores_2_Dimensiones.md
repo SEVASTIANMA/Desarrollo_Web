@@ -34,3 +34,37 @@ $$\theta = \tan^{-1}\left(\frac{R_y}{R_x}\right)$$
 2. Aplicar la tangente inversa: $\tan^{-1}(0.6) \approx 30.96^\circ$
 
 **Resultado:** El barco se encuentra en una dirección de **$30.96^\circ$ al noreste**.
+Algoritmo EjercicioVectores2D
+    // Definición de variables para los componentes de los vectores
+    Definir Ax, Ay, Bx, By Como Real
+    Definir Rx, Ry, magnitud, angulo Como Real
+    
+    // Asignación de los valores del ejercicio
+    // Vector A = (3, 4)
+    Ax <- 3
+    Ay <- 4
+    // Vector B = (2, -1)
+    Bx <- 2
+    By <- -1
+    
+    Escribir "=== EJERCICIO DE VECTORES EN 2D ==="
+    Escribir "Vector A = (", Ax, ", ", Ay, ")"
+    Escribir "Vector B = (", Bx, ", ", By, ")"
+    Escribir "-----------------------------------"
+    
+    // PARTE 1: Cálculo del Vector Resultante (Suma)
+    Rx <- Ax + Bx
+    Ry <- Ay + By
+    Escribir "Parte 1: El Vector Resultante R es: (", Rx, ", ", Ry, ")"
+    
+    // PARTE 2: Cálculo de la Magnitud (Teorema de Pitágoras)
+    magnitud <- Raiz((Rx^2) + (Ry^2))
+    Escribir "Parte 2: La magnitud (distancia) es: ", magnitud, " km"
+    
+    // PARTE 3: Cálculo de la Dirección (Ángulo en grados)
+    // En PseInt, la función de arco tangente (atan) devuelve el resultado en radianes.
+    // Lo multiplicamos por 180 y dividimos por PI para pasarlo a grados sexagesimales.
+    angulo <- atan(Ry / Rx) * 180 / PI
+    Escribir "Parte 3: La direccion (angulo) es: ", angulo, " grados al Noreste"
+    Escribir "==================================="
+FinAlgoritmo
