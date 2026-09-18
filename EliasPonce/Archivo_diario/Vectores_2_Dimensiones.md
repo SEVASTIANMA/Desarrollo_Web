@@ -11,3 +11,15 @@ $$\vec{R} = (A_x + B_x, A_y + B_y)$$
 * **Componente $y$:** $4 + (-1) = 3$
 
 **Resultado:** El vector de desplazamiento total es **$\vec{R} = (5, 3)$ kilómetros**.
+# Ejercicio de Vectores 2D - Parte 2: Magnitud del Vector
+
+Con el vector resultante anterior $\vec{R} = (5, 3)$, calculamos la distancia total en línea recta desde el puerto hasta la ubicación final del barco. Para ello, aplicamos el **Teorema de Pitágoras**:
+
+$$|\vec{R}| = \sqrt{R_x^2 + R_y^2}$$
+
+### Pasos del cálculo:
+1. Elevar las componentes al cuadrado: $5^2 = 25$ y $3^2 = 9$
+2. Sumar los resultados: $25 + 9 = 34$
+3. Calcular la raíz cuadrada: $\sqrt{34} \approx 5.83$
+
+**Resultado:** La distancia en línea recta desde el puerto es de **$5.83$ kilómetros**.
