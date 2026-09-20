@@ -27,3 +27,22 @@ Algoritmo Validar_Contrasena
 	FinMientras
 	Escribir "¡Acceso concedido!"
 FinAlgoritmo
+Algoritmo Suma_Numeros_Positivos
+	// PARTE 1: Inicialización de variables.
+	// Creamos 'num' para leer los datos y 'acumulador' para guardar la suma.
+	// El acumulador debe iniciar en 0 para no alterar la operación matemática.
+	Definir num, acumulador Como Entero
+	acumulador <- 0
+	Repetir
+		
+		// PARTE 2: Entrada de datos, acumulación y condición de salida.
+		// El programa pide un número. Si es positivo (mayor a 0), lo suma al total.
+		// El ciclo se repite "Hasta Que" el usuario introduzca un número negativo (menor que 0).
+		Escribir "Introduce un número a sumar (o uno negativo para salir):"
+		Leer num
+		Si num > 0 Entonces
+			acumulador <- acumulador + num
+		FinSi
+	Hasta Que num < 0
+	Escribir "La suma total de los números positivos es: ", acumulador
+FinAlgoritmo
