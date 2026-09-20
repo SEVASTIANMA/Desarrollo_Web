@@ -11,3 +11,19 @@ Algoritmo Contador_Ascendente
 		Escribir "Número: ", i
 	FinPara
 FinAlgoritmo
+Algoritmo Validar_Contrasena
+	// PARTE 1: Inicialización y condición de entrada.
+	// Se define la variable 'clave' como texto y se inicializa vacía. El ciclo
+	// 'Mientras' verifica si es diferente a '1234' para decidir si entra al bucle.
+	Definir clave Como Texto
+	clave <- ""
+	Mientras clave != "1234" Hacer
+		
+		// PARTE 2: Petición de datos y validación.
+		// Solicita la clave al usuario. Si el usuario se equivoca, el bucle se repite.
+		// Si escribe '1234', la condición se rompe, sale del ciclo y da el acceso.
+		Escribir "Introduce la contraseña correcta:"
+		Leer clave
+	FinMientras
+	Escribir "¡Acceso concedido!"
+FinAlgoritmo
