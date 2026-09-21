@@ -61,3 +61,13 @@ La claridad sintáctica de Python lo ha convertido en el lenguaje de programaci�
 Para alguien que viene de herramientas como Excel o SQL, aprender Python abre tres puertas principales: análisis de datasets masivos, automatización completa de procesos (incluyendo web scraping de fuentes externas) y aplicación de machine learning predictivo, no solo descriptivo. Esta combinación de accesibilidad y poder explica por qué Python domina tanto en educación como en industria.
 
 
+## El futuro de Python
+
+
+
+En 2026, Python mantiene su posición como el lenguaje de programación más popular, especialmente en campos emergentes como inteligencia artificial, automatización y análisis de datos. Su capacidad para integrar componentes escritos en otros lenguajes (como C o C++) le permite mantener alto rendimiento en operaciones críticas mientras conserva su sintaxis sencilla para el desarrollo general.
+
+
+
+La evolución continua del lenguaje, con mejoras en rendimiento y nuevas características en cada versión, junto con el crecimiento constante de su comunidad y ecosistema, sugiere que Python seguirá siendo una herramienta fundamental en la programación durante la próxima década. Para profesionales en campos como administración pública, seguridad o investigación, dominar Python representa una ventaja competitiva significativa en un mundo cada vez más orientado a datos y automatización. 
+
