@@ -25,3 +25,9 @@ Sub CalcularPromedioNotas()
     ' 4. Mostrar el resultado en un mensaje emergente
     MsgBox "El promedio final de las 5 notas es: " & promedio, vbInformation, "Resultado del Promedio"
 End Sub
+
+## Cómo funciona: 
+Al estar integrado en Excel, no utiliza la consola negra tradicional, sino la función emergente InputBox para pedir los datos uno a uno, y MsgBox para entregar el resultado.
+
+## Proceso:
+Se utiliza CDbl() para asegurar que lo que el usuario escribe en el cuadro de texto de Excel se interprete como un número decimal (Double), permitiendo sumar las 5 variables directamente.

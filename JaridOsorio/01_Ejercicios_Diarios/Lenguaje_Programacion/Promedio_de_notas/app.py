@@ -13,3 +13,7 @@ print()
 print("-" * 40)
 print(f"El promedio final de las 5 notas es: {promedio}")
 print("-" * 40)
+
+//Cómo funciona: Utiliza la función integrada input() para capturar los datos desde la terminal de comandos.
+
+//Proceso: Dado que input() siempre recibe texto, se envuelve cada lectura en un float() para convertirla en número con decimales. Luego, se realiza la suma lineal de las variables y se divide entre 5, mostrando el resultado formateado en pantalla.

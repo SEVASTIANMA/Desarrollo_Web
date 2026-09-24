@@ -29,3 +29,7 @@ void main() {
   print('El promedio final de las 5 notas es: $promedio');
   print('----------------------------------------');
 }
+
+//Cómo funciona: Utiliza la librería dart.io para capturar la entrada de texto por la consola con stdin.readLineSync().
+
+//Proceso: Cada valor se convierte a número decimal con double.parse(). Las 5 notas se guardan en variables independientes (nota1 a nota5), se suman de forma directa y lineal, y el resultado se divide entre 5 para obtener el promedio.
