@@ -47,3 +47,24 @@ void main() {
   print('El promedio es: $promedio');
   
 }
+
+## VISUAL BASE
+
+Sub CalcularPromedioSencillo()
+    Dim nota1 As Double
+    Dim nota2 As Double
+    Dim nota3 As Double
+    Dim nota4 As Double
+    Dim nota5 As Double
+    Dim promedio As Double
+    
+    nota1 = Cells(1, 1).Value
+    nota2 = Cells(2, 1).Value
+    nota3 = Cells(3, 1).Value
+    nota4 = Cells(4, 1).Value
+    nota5 = Cells(5, 1).Value
+    
+    promedio = (nota1 + nota2 + nota3 + nota4 + nota5) / 5
+    
+    Cells(1, 2).Value = promedio
+End Sub
