@@ -48,7 +48,6 @@ Este algoritmo tiene como objetivo determinar la cantidad de dígitos (cifras) q
 ## Resumen de Salidas
 
 | Rango del Número | Resultado en Pantalla |
-| :--- | :--- |
 | Menor que 0 o Mayor que 9999 | Numero fuera de rango |
 | De 0 a 9 | Tiene 1 cifra |
 | De 10 a 99 | Tiene 2 cifras |
