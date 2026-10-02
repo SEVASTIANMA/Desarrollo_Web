@@ -45,8 +45,6 @@ Este algoritmo tiene como objetivo determinar la cantidad de dígitos (cifras) q
    * **3 cifras:** Si no fue menor a 100, pero es menor a 1,000 (números del 100 al 999).
    * **4 cifras:** Si no cumple ninguna de las anteriores (números del 1,000 al 9,999).
 
----
-
 ## Resumen de Salidas
 
 | Rango del Número | Resultado en Pantalla |
