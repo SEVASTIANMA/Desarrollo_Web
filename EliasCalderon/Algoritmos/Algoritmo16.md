@@ -26,8 +26,6 @@ FinAlgoritmo
 
 Este algoritmo tiene como objetivo determinar la cantidad de dígitos (cifras) que tiene un número entero ingresado por el usuario, siempre y cuando este número se encuentre en un rango específico de 0 a 9,999.
 
----
-
 ## Estructura y Funcionamiento Paso a Paso
 
 1. **Definición de Variables:**
@@ -58,4 +56,3 @@ Este algoritmo tiene como objetivo determinar la cantidad de dígitos (cifras) q
 | De 10 a 99 | Tiene 2 cifras |
 | De 100 a 999 | Tiene 3 cifras |
 | De 1000 a 9999 | Tiene 4 cifras |
-S
