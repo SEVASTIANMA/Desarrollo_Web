@@ -1,3 +1,5 @@
+# Algoritmo
+
 Algoritmo contarNum
 	Definir numero0 como entero
 	Escribir 'Digite su numero del 0 al 9.999: '
