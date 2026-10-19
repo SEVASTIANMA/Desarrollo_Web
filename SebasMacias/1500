@@ -1,0 +1,15 @@
+# Python
+
+class PEPE:
+    def __init__(self, id_clase):
+        self.id_clase = id_clase
+
+lista_de_clases = []
+
+for i in range(1, 1501):
+    objeto = PEPE(id_clase=i)
+    lista_de_clases.append(objeto)
+
+print(f"Total de objetos creados: {len(lista_de_clases)}")
+print(f"ID de la primera clase: {lista_de_clases[0].id_clase}")
+print(f"ID de la última clase: {lista_de_clases[-1].id_clase}") 
