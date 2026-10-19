@@ -5,4 +5,4 @@ void main(){
  }
 }
 
-class Nombres()
+class Nombres{}
