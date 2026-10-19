@@ -98,7 +98,7 @@ Esta versión utiliza una estructura limpia y fácil de comprender, evitando con
 
 ---
 
-## 3. Funcionamiento en VBA (Excel)
+## 3. Funcionamiento en VBA
 
 Esta macro automatiza la lectura y el cálculo operando directamente sobre las cuadrículas de la hoja de Excel:
 
