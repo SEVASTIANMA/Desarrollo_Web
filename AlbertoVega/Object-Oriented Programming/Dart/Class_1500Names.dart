@@ -1,7 +1,12 @@
-void main(){
-    Nombres nombres = new Nombres();
-    for (var 1 in 1500) {
-        print ('Nombre');
+void main() {
+  Nombres nombres = new Nombres(); 
+  
+  for (int i = 1; i <= 1500; i++) {
+    nombres.imprimir(i); 
+  }
 }
-
-class Nombres()
+class Nombres {
+  void imprimir(int numero) {
+    print('Nombre $numero');
+  }
+}

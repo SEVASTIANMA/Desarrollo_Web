@@ -8,3 +8,4 @@ void main() {
 
   double promedio = notas.reduce((a, b) => a + b) / notas.length;
   print('Promedio: ${promedio.toStringAsFixed(2)}');
+}
