@@ -104,7 +104,7 @@ El programa en Dart sigue una lógica de consola estructurada y fuertemente tipa
 
 ---
 
-## 3. Funcionamiento en VBA (Excel)
+## 3. Funcionamiento en VBA
 
 Esta macro automatiza la lectura y escritura directamente sobre las cuadrículas de la hoja de cálculo activa en Excel:
 
