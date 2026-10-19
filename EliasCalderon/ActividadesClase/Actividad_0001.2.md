@@ -70,7 +70,7 @@ Sub CalcularPromedioSencillo()
 End Sub
 
 
-# Explicación de los Algoritmos Secuenciales (Versión Sencilla)
+# Explicación de los Algoritmos Secuenciales
 
 A continuación se detalla el funcionamiento paso a paso de cada uno de los programas en su formato más básico y directo.
 
@@ -98,7 +98,7 @@ Esta versión utiliza una estructura limpia y fácil de comprender, evitando con
 
 ---
 
-## 3. Funcionamiento en VBA (Excel)
+## 3. Funcionamiento en VBA
 
 Esta macro automatiza la lectura y el cálculo operando directamente sobre las cuadrículas de la hoja de Excel:
 
