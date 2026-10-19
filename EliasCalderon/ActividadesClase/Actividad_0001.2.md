@@ -70,7 +70,7 @@ Sub CalcularPromedioSencillo()
 End Sub
 
 
-# Explicación de los Algoritmos Secuenciales (Versión Sencilla)
+# Explicación de los Algoritmos Secuenciales
 
 A continuación se detalla el funcionamiento paso a paso de cada uno de los programas en su formato más básico y directo.
 
