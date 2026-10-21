@@ -29,3 +29,25 @@ El programa utiliza una estructura condicional (`si... Entonces... SiNo`) para v
 
 Finalmente, el algoritmo muestra el resultado numérico exacto mediante la instrucción:  
 `Escribir 'El promedio es: ' promedio`.
+
+
+Algoritmo promedioNotas
+	Definir nota, suma, promedio Como Real
+	Definir i Como Entero
+	suma <- 0
+
+	para i <- 1 Hasta 4 con paso 1 Hacer
+		Escribir 'ingresar la nota: '
+		Leer nota
+		suma <- suma + nota
+	FinPara
+	promedio <- suma / 4
+	
+	si promedio >= 3.5 Entonces
+		Escribir 'Aprobo'
+	SiNo
+		Escribir 'No aprobo'
+	FinSi
+	
+	Escribir 'El promedio es: ' promedio
+FinAlgoritmo
