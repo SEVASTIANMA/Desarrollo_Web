@@ -59,3 +59,18 @@ Si ingresamos **`num1 = 5`** y **`num2 = 3`** (Calculando $5 \times 3$):
    * **Vuelta 2:** `resultado` = 5 + 5 = **10**
    * **Vuelta 3:** `resultado` = 10 + 5 = **15**
 4. **Fin:** El bucle termina y el programa imprime: *"El producto es: 15"*.
+
+
+Algoritmo sumasSucesivas
+	escribir 'Digite sus numeros a calcular: '
+	Leer num1, num2
+	si num1 > 0 Y num2 > 0 Entonces
+		resultado <- 0
+		para i <- 1 Hasta num2 Hacer
+			resultado = resultado + num1
+		FinPara
+		Escribir 'El producto es: ' resultado
+	SiNo
+		Escribir 'Los numeros deben ser mayores a 0'
+	FinSi	
+FinAlgoritmo
