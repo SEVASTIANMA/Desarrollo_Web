@@ -12,3 +12,4 @@ Future<String> obtenerDatosServidor() {
     Duration(seconds: 2), 
     () => 'Registros de aprendices SENA cargados exitosamente.'
   );
+}
