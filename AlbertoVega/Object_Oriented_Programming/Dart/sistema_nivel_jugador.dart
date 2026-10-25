@@ -1,7 +1,6 @@
 import "dart:io";
 
 void main(){
-  void main(){
   print("Bienvenido Guerrero, a continuacion para poder ingresar al gremio necesitamos que digite su nombre y su nivel a continuacion.");
   print("Nombre:");
   String? name = stdin.readLineSync();
@@ -15,4 +14,8 @@ class Guerrero{
   
   Guerrero(this.nombre, this.nivel);
 
+  void miGuerrero(){
+  int dmg = this.nivel! * 10;
+  print('"¡El guerrero ${this.nombre} ataca y hace ${dmg} de daño!');
+ }
 }
