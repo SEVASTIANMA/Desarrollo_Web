@@ -9,7 +9,9 @@ void main(){
   print("Excelente señor/a ${nameleido} ${apellidoleido}. Para finalizar por favor ingrese su edad a continuacion:");
   int? edadleida = int.parse(stdin.readLineSync()!);
 
-  Usuario usuario = Usuario();
+  Usuario usuario = Usuario(nameleido, apellidoleido, edadleida);
+
+  print("Usuario registrado y creado con exito, puede pasar señor/a ${usuario.name} ${usuario.apellido} con ${usuario.edad} años de edad");
 }
 
 class Usuario{
