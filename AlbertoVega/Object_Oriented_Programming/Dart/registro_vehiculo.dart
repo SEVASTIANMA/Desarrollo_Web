@@ -1,7 +1,7 @@
 import "dart:io";
 
 void main(){
-  print("Bienvenido a AutoSpark, para poder empezar con el registro de cita para lavar su auto, ingrese a la del mismo a continuacion:");
+  print("Bienvenido a AutoSpark, para poder empezar con el registro de cita para lavar su auto, ingrese la marca del mismo a continuacion:");
   String? marca1 = stdin.readLineSync();
   print("Excelente, la marca registrada es ${marca1}, ahora por favor ingrese el color del vehiculo:");
   String? color1 = stdin.readLineSync();
