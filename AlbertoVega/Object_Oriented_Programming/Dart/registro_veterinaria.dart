@@ -6,6 +6,11 @@ void main(){
   String? name = stdin.readLineSync();
   print('Edad:');
   String? text2 = stdin.readLineSync()!;
+  int? years = int.parse(text2);
+  
+  Mascota mascotas = Mascota(name, years);
+
+  print('Excelente, su mascota ${mascotas.nombre} registrada con la edad de ${mascotas.edad} se agendara para...');
 }
 
 class Mascota{
