@@ -6,6 +6,10 @@ void main(){
   String? name = stdin.readLineSync();
   print("Señor/a ${name}, digite su nivel para poder terminar y determinar su poder.");
   String? text1 = stdin.readLineSync()!;
+  int nivel = int.parse(text1);
+  
+  Guerrero guerrero = Guerrero(name, nivel);
+  guerrero.miGuerrero();
 }
 
 class Guerrero{
