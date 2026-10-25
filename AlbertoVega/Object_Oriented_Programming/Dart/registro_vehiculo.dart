@@ -7,9 +7,12 @@ void main(){
   String? color1 = stdin.readLineSync();
 
   Auto auto = Auto(marca1, color1);
+
+  print("Su auto ha sido registrado con exito. Carro ${auto.marca} de color ${auto.color}");
 }
 
 class Auto{
   String? color;
   String? marca;
+  Auto(this.marca, this.color);
 }
