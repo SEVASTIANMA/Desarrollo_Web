@@ -7,6 +7,9 @@ void main(){
   print("Apellido");
   String? apellidoleido = stdin.readLineSync();
   print("Excelente señor/a ${nameleido} ${apellidoleido}. Para finalizar por favor ingrese su edad a continuacion:");
+  int? edadleida = int.parse(stdin.readLineSync()!);
+
+  Usuario usuario = Usuario();
 }
 
 class Usuario{
