@@ -49,3 +49,12 @@ CSS utiliza **reglas** que consisten en un **selector** (qué elemento modificar
 - `font-family`: Establece el tipo de letra (ej. `font-family: Arial, sans-serif;`).
 - `font-size`: Modifica el tamaño del texto (ej. `font-size: 16px;`).
 - `text-align`: Alinea el texto (ej. `left`, `center`, `right`).
+
+## El Modelo de Caja (Box Model)
+
+Todo en la web es una caja rectangular. Estas propiedades controlan el espacio alrededor y dentro de esas cajas:
+
+- `margin`: Espacio invisible *fuera* del borde del elemento (separa el elemento de otros).
+- `padding`: Espacio *dentro* del elemento, entre el contenido y su borde.
+- `border`: Una línea que rodea la caja (ej. `border: 1px solid black;`).
+- `width` y `height`: Definen el ancho y el alto de la caja.
