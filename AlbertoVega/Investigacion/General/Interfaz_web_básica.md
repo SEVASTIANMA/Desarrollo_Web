@@ -31,7 +31,6 @@ Toda página web necesita un esqueleto inicial para funcionar correctamente:
 
 ---
 
-
 # CSS: El Diseño y la Apariencia
 
 CSS utiliza **reglas** que consisten en un **selector** (qué elemento modificar) y un bloque de **declaraciones** (qué propiedades cambiar).
