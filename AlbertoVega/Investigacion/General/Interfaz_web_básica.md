@@ -28,3 +28,10 @@ Toda página web necesita un esqueleto inicial para funcionar correctamente:
 - `<div>`: Un contenedor genérico en bloque. Se usa para agrupar elementos y aplicarles estilos estructurales.
 - `<span>`: Un contenedor genérico en línea. Sirve para aplicar estilo a una parte específica de un texto.
 - `<ul>` y `<ol>`: Crean listas desordenadas (viñetas) y ordenadas (números). Cada elemento de la lista debe ir dentro de una etiqueta `<li>`.
+
+---
+
+
+# CSS: El Diseño y la Apariencia
+
+CSS utiliza **reglas** que consisten en un **selector** (qué elemento modificar) y un bloque de **declaraciones** (qué propiedades cambiar).
