@@ -41,3 +41,11 @@ CSS utiliza **reglas** que consisten en un **selector** (qué elemento modificar
 - **Por etiqueta:** Modifica todas las etiquetas de ese tipo. Ejemplo: `p { ... }` afecta a todos los párrafos.
 - **Por clase (`.`):** Modifica elementos que compartan un atributo `class` específico. Ejemplo: `.boton-rojo { ... }`. Es el método más utilizado porque es reutilizable.
 - **Por ID (`#`):** Modifica un elemento único con un atributo `id` específico. Ejemplo: `#menu-principal { ... }`.
+
+## Propiedades Esenciales
+
+- `color`: Cambia el color del texto (ej. `color: blue;` o `color: #ff0000;`).
+- `background-color`: Define el color de fondo de un elemento.
+- `font-family`: Establece el tipo de letra (ej. `font-family: Arial, sans-serif;`).
+- `font-size`: Modifica el tamaño del texto (ej. `font-size: 16px;`).
+- `text-align`: Alinea el texto (ej. `left`, `center`, `right`).
