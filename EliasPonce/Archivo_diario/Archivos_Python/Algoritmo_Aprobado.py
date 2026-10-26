@@ -7,9 +7,8 @@ para_repetir = []
 # 2. Recorremos cada asignatura para pedir la nota
 for asignatura in asignaturas:
     # Solicitamos la nota al usuario en el rango de 0 a 100
-    nota = float(input(f"¿Qué nota sacaste en {asignatura}? (0-100): "))
-    
-    # 3. Si la nota NO es superior a 70, la asignatura no se aprueba
+    nota = float(input(f"¿Qué nota sacaste en {asignatura}? (0-100): ")) 
+    #si superior a 70, la asignatura no se aprueba
     # (es decir, nota <= 70 significa que debe repetirse)
     if nota <= 70:
         para_repetir.append(asignatura)
