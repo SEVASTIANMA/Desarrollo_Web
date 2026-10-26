@@ -11,3 +11,9 @@ Toda página web necesita un esqueleto inicial para funcionar correctamente:
 - `<html>`: El contenedor principal de toda la página.
 - `<head>`: Contiene metadatos, el título de la pestaña y enlaces a estilos. No es visible en la página.
 - `<body>`: Contiene todo el contenido visible (textos, imágenes, videos).
+
+## Textos y Jerarquía
+
+- `<h1>` a `<h6>`: Definen los encabezados. `<h1>` es el título principal (solo debe haber uno por página) y `<h6>` es el de menor importancia.
+- `<p>`: Define un párrafo de texto estándar.
+- `<strong>` y `<em>`: Aplican negrita (importancia fuerte) y cursiva (énfasis) al texto respectivamente.
