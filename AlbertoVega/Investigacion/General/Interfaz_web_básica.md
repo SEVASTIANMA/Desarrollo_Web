@@ -64,3 +64,41 @@ Todo en la web es una caja rectangular. Estas propiedades controlan el espacio a
 ## Ejemplo Integrado
 
 Aquí tienes cómo se ven ambos lenguajes trabajando juntos. El CSS está integrado en la sección `<head>` usando la etiqueta `<style>`:
+
+### HTML
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Reglas CSS */
+    body {
+      background-color: #f0f0f0;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+    .tarjeta {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px; /* Bordes redondeados */
+      width: 300px;
+      margin: 50px auto; /* Centra la tarjeta horizontalmente */
+    }
+    .titulo {
+      color: #333333;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Estructura HTML -->
+  <div class="tarjeta">
+    <h1 class="titulo">Mi Primera Web</h1>
+    <p>Este es un párrafo dentro de un contenedor div estilizado como tarjeta.</p>
+    <a href="https://ejemplo.com">Visitar enlace</a>
+  </div>
+
+</body>
+</html>
+```
