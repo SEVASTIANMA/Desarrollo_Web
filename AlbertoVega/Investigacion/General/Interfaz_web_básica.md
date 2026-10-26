@@ -58,3 +58,9 @@ Todo en la web es una caja rectangular. Estas propiedades controlan el espacio a
 - `padding`: Espacio *dentro* del elemento, entre el contenido y su borde.
 - `border`: Una línea que rodea la caja (ej. `border: 1px solid black;`).
 - `width` y `height`: Definen el ancho y el alto de la caja.
+
+---
+
+## Ejemplo Integrado
+
+Aquí tienes cómo se ven ambos lenguajes trabajando juntos. El CSS está integrado en la sección `<head>` usando la etiqueta `<style>`:
