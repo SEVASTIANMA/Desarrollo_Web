@@ -22,3 +22,9 @@ Toda página web necesita un esqueleto inicial para funcionar correctamente:
 
 - `<a href="url">`: Crea un enlace o hipervínculo hacia otra página. El atributo `href` indica el destino.
 - `<img src="imagen.jpg" alt="Descripción">`: Inserta una imagen. No tiene etiqueta de cierre. El atributo `src` indica la ruta del archivo y `alt` el texto alternativo si la imagen no carga.
+
+## Agrupación y Listas
+
+- `<div>`: Un contenedor genérico en bloque. Se usa para agrupar elementos y aplicarles estilos estructurales.
+- `<span>`: Un contenedor genérico en línea. Sirve para aplicar estilo a una parte específica de un texto.
+- `<ul>` y `<ol>`: Crean listas desordenadas (viñetas) y ordenadas (números). Cada elemento de la lista debe ir dentro de una etiqueta `<li>`.
