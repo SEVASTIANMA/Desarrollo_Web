@@ -35,3 +35,9 @@ Toda página web necesita un esqueleto inicial para funcionar correctamente:
 # CSS: El Diseño y la Apariencia
 
 CSS utiliza **reglas** que consisten en un **selector** (qué elemento modificar) y un bloque de **declaraciones** (qué propiedades cambiar).
+
+## Selectores Básicos
+
+- **Por etiqueta:** Modifica todas las etiquetas de ese tipo. Ejemplo: `p { ... }` afecta a todos los párrafos.
+- **Por clase (`.`):** Modifica elementos que compartan un atributo `class` específico. Ejemplo: `.boton-rojo { ... }`. Es el método más utilizado porque es reutilizable.
+- **Por ID (`#`):** Modifica un elemento único con un atributo `id` específico. Ejemplo: `#menu-principal { ... }`.
