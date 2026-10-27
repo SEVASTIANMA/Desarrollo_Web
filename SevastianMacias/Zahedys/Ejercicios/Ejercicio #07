@@ -1,0 +1,26 @@
+precios_frutas = {
+    "manzana": 1.50,
+    "platano": 0.80,
+    "naranja": 1.20,
+    "fresa": 2.50,
+    "uva": 3.00
+}
+
+while True:
+    # Solicitar el nombre de la fruta (en minúsculas y sin espacios extra)
+    fruta = input("\nIntroduce el nombre de la fruta: ").strip().lower()
+    
+    if fruta in precios_frutas:
+        try:
+            cantidad = float(input(f"Introduce la cantidad vendida de {fruta}: "))
+            precio_final = precios_frutas[fruta] * cantidad
+            print(f"El precio final es: ${precio_final:.2f}")
+        except ValueError:
+            print("Error: Debes introducir un número válido para la cantidad.")
+    else:
+        print(f"Error: La fruta '{fruta}' no está registrada en el sistema.")
+        
+    continuar = input("¿Quieres hacer otra consulta? (si/no): ").strip().lower()
+    if continuar != 'si':
+        print("Programa finalizado. ¡Hasta luego!")
+        break
