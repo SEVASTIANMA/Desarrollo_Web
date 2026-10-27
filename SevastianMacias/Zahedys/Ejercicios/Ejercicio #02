@@ -1,0 +1,30 @@
+facturacion_total = 0.0
+litros_articulo_1 = 0.0
+facturas_mas_300k = 0
+
+print("--- Gestión de Facturas de Desinfectantes ---")
+
+while facturacion_total < 1000000:
+    print(f"\nFacturación actual: ${facturacion_total:,.2f}")
+    print("Ingrese los datos de la nueva factura:")
+    
+    codigo_articulo = input("Código del artículo: ")
+    cantidad_litros = float(input("Cantidad vendida en litros: "))
+    precio_por_litro = float(input("Precio por litro: "))
+    
+    importe_factura = cantidad_litros * precio_por_litro
+    
+    facturacion_total += importe_factura
+    
+    if codigo_articulo == "1":
+        litros_articulo_1 += cantidad_litros
+        
+    if importe_factura > 300000:
+        facturas_mas_300k += 1
+
+print("\n" + "="*40)
+print("--- RESUMEN FINAL ---")
+print(f"Facturación total: ${facturacion_total:,.2f}")
+print(f"Cantidad total de litros vendidos del artículo 1: {litros_articulo_1:.2f} litros")
+print(f"Número de facturas emitidas por más de $300,000: {facturas_mas_300k}")
+print("="*40)

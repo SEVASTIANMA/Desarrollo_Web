@@ -1,0 +1,11 @@
+asignaturas = ["Matemáticas", "Física", "Química", "Historia", "Lengua"]
+
+notas = []
+
+for asignatura in asignaturas:
+    nota = input(f"¿Qué nota has sacado en {asignatura}?: ")
+    notas.append(nota)
+
+print("\n--- Resultados del curso ---")
+for i in range(len(asignaturas)):
+    print(f"En {asignaturas[i]} has sacado {notas[i]}")
