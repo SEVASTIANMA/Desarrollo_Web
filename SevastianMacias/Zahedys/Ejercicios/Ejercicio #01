@@ -1,0 +1,37 @@
+suma_edades = 0
+suma_alturas = 0
+total_alumnos = 0
+mayores_18 = 0
+altos_1_75 = 0
+
+print("Introduce los datos de los alumnos.")
+
+while suma_edades < 100:
+    print(f"\n--- Alumno {total_alumnos + 1} ---")
+    
+    edad = int(input("Introduce la edad: "))
+    altura = float(input("Introduce la altura (en metros, ej. 1.70): "))
+    
+    suma_edades += edad
+    suma_alturas += altura
+    total_alumnos += 1
+    
+    if edad > 18:
+        mayores_18 += 1
+        
+    if altura > 1.75:
+        altos_1_75 += 1
+
+if total_alumnos > 0:
+    edad_media = suma_edades / total_alumnos
+    altura_media = suma_alturas / total_alumnos
+    
+    print("\n================ RESULTADOS ================")
+    print(f"Suma total de edades alcanzada: {suma_edades}")
+    print(f"Cantidad total de alumnos registrados: {total_alumnos}")
+    print(f"Edad media: {edad_media:.2f} años")
+    print(f"Estatura media: {altura_media:.2f} metros")
+    print(f"Alumnos mayores de 18 años: {mayores_18}")
+    print(f"Alumnos que miden más de 1.75 m: {altos_1_75}")
+else:
+    print("No se registraron alumnos.")

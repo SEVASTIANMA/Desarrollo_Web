@@ -1,0 +1,14 @@
+def contar_caracteres(cadena):
+    diccionario = {}
+    for caracter in cadena:
+        if caracter in diccionario:
+            diccionario[caracter] += 1
+        else:
+            diccionario[caracter] = 1
+    return diccionario
+
+cadena_usuario = input("Introduce una cadena de texto: ")
+resultado = contar_caracteres(cadena_usuario)
+
+print("Cantidad de apariciones:")
+print(resultado)

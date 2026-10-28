@@ -1,0 +1,23 @@
+materias = []
+
+print("Introduce tus asignaturas:")
+
+while True:
+    asignatura = input("\nNombre de la asignatura: ").strip()
+    if not asignatura:
+        break
+        
+    nota = float(input(f"¿Qué nota sacaste en {asignatura}?: "))
+    
+    materias.append({"nombre": asignatura, "nota": nota})
+
+for m in materias[:]:  
+    if m["nota"] >= 3:
+        materias.remove(m)  
+
+print("\n--- ASIGNATURAS REPROBADAS ---") 
+if materias:
+    for m in materias:
+        print(f"Reprobado: {m['nombre']}")
+else:
+    print("Aprobaste todas las asignaturas")

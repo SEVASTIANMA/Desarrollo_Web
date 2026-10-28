@@ -1,0 +1,6 @@
+pepe = int(input("Introduce la altura del triangulo: "))
+
+for S in range(1, pepe + 1):
+    for M in range(2 * S - 1, 0, -2):
+        print(M, end=" ")
+    print() 
