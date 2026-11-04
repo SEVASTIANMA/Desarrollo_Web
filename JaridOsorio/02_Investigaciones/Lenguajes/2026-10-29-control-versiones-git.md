@@ -24,3 +24,22 @@ git push origin main
 
 ```
 
+---
+
+## 4. Cuadro Comparativo: Control Manual vs. Git
+
+| Criterio | Copias de Respaldo Manuales (Carpeta .zip) | Control de Versiones con Git |
+| :--- | :--- | :--- |
+| **Historial** | Confuso, nombres repetidos (`proyecto_v1`, `final_final`). | Lineal, detallado, con autor, fecha y mensaje descriptivo. |
+| **Trabajo en Equipo** | Alto riesgo de sobreescribir archivos de compañeros. | Sincronización limpia, fusiones automáticas y resolución de conflictos. |
+
+---
+
+## 5. Análisis de Complejidad
+
+* **Eficiencia Operativa:** Git utiliza algoritmos basados en grafos acíclicos dirigidos y compresión de diferencias (*deltas*), lo que optimiza el espacio en disco y acelera la recuperación de versiones anteriores en comparación con almacenar copias completas de proyectos enteros.
+
+---
+
+## 6. Conclusión
+El dominio de Git y GitHub Desktop es una competencia indispensable en el programa ADSO, garantizando la trazabilidad, seguridad y profesionalismo en la entrega de productos de software.
