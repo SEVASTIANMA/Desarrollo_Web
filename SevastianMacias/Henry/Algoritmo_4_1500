@@ -1,0 +1,36 @@
+# Python
+
+class PEPE:
+    def __init__(self, id_clase):
+        self.id_clase = id_clase
+
+lista_de_clases = []
+
+for i in range(1, 1501):
+    objeto = PEPE(id_clase=i)
+    lista_de_clases.append(objeto)
+
+print(f"Total de objetos creados: {len(lista_de_clases)}")
+print(f"ID de la primera clase: {lista_de_clases[0].id_clase}")
+print(f"ID de la última clase: {lista_de_clases[-1].id_clase}") 
+
+
+# Dart
+
+class PEPE {
+  final int idClase;
+  
+  PEPE({required this.idClase});
+}
+
+void main() {
+  final mapDeClases = <int, PEPE>{};
+
+  for (var i = 1; i <= 1500; i++) {
+    mapDeClases[i] = PEPE(idClase: i);
+  }
+
+  print("Total de objetos creados: ${mapDeClases.length}");
+  print("ID de la primera clase: ${mapDeClases[1]?.idClase}");
+  print("ID de la última clase: ${mapDeClases[1500]?.idClase}");
+}

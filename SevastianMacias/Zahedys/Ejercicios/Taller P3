@@ -1,0 +1,8 @@
+Cantidad = float(input("¿Cantidad a invertir? "))
+Interes = int(input("¿Interes porcentual anual? (Sin simbolo) "))
+Años = int(input("¿Años? "))
+
+for Dorian in range(1, Años + 1):
+    Capital_obtenido = Cantidad * (1 + Interes / 100) ** Dorian 
+    
+    print(f"Capital tras {Dorian} años: {round(Capital_obtenido, 2)}") 
