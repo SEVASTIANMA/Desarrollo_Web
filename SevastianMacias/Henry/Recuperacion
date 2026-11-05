@@ -1,0 +1,15 @@
+class Transaccion {
+  int? id;
+  String? descripcion;
+}
+
+void main() {
+  for (int i = 1; i <= 10; i++) {
+    Transaccion transaccion = Transaccion(); 
+    transaccion.id = i;
+    transaccion.descripcion = "2015 + ${i}";
+    
+    print("transaccion :${transaccion.id} - modelo:${transaccion.descripcion}");
+  }
+} 
+
