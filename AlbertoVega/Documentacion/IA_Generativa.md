@@ -19,3 +19,4 @@ Más allá del error técnico, existe un peligro silencioso en el ámbito format
 ## Sesgos algorítmicos y la ilusión de la neutralidad
 
 Existe la creencia extendida de que las máquinas, al operar con matemáticas y código, toman decisiones objetivas y libres de prejuicios humanos. Nada está más lejos de la realidad técnica. Los modelos de inteligencia artificial generativa aprenden a partir de conjuntos masivos de datos recolectados de internet, un entorno que refleja de manera desigual las realidades culturales, económicas y sociales del planeta. Como resultado, los algoritmos absorben, procesan y a menudo amplifican los sesgos históricos presentes en esa información.
+
