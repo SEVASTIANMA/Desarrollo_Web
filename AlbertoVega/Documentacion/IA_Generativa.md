@@ -1,0 +1,5 @@
+# Algoritmos con criterio: El reto de construir una Inteligencia Artificial Generativa ética desde la formación técnica y tecnológica
+
+## Introducción
+
+Hace apenas unos años, la inteligencia artificial era un concepto reservado para centros de investigación avanzada o grandes corporaciones tecnológicas que procesaban datos a gran escala para predecir comportamientos de consumo. Hoy, esa barrera se ha roto por completo. Con la irrupción de la Inteligencia Artificial Generativa, cualquier aprendiz, programador, diseñador o administrativo tiene a su disposición sistemas capaces de redactar código, estructurar informes financieros, componer piezas gráficas y sintetizar grandes volúmenes de información en cuestión de segundos. Los modelos de lenguaje de gran tamaño y los motores de generación multimedia han dejado de ser simples calculadoras predictivas para convertirse en asistentes activos dentro de los entornos educativos y productivos.
