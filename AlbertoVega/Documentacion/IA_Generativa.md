@@ -42,3 +42,7 @@ En el contexto del SENA, donde se forma la fuerza productiva que impulsa la indu
 * **Higiene y protección de datos:** Establecer protocolos estrictos para anonimizar cualquier información antes de procesarla en herramientas externas, protegiendo tanto la intimidad de los ciudadanos como los activos intelectuales de las empresas.
 * **Transparencia y honestidad académica y laboral:** Declarar de manera abierta cuándo y cómo se han utilizado herramientas generativas en la elaboración de un proyecto, evitando presentar el procesamiento estadístico de una máquina como si fuera investigación o autoría original propia.
 * **Sostenibilidad y eficiencia:** Reconocer que cada consulta a un modelo generativo masivo implica un consumo energético e hídrico considerable en los centros de datos globales, por lo que su uso debe ser racional y orientado a tareas donde realmente aporte valor, no por simple pereza operativa.
+
+## Conclusión
+
+La Inteligencia Artificial Generativa ha redefinido las reglas del juego en el mundo laboral y educativo, ofreciendo capacidades de procesamiento y creación que hace una década parecían ciencia ficción. No obstante, a lo largo de este análisis queda claro que el potencial productivo de estas herramientas camina de la mano con desafíos profundos: el riesgo de atrofiar el pensamiento crítico por una dependencia excesiva, la reproducción de sesgos discriminatorios ocultos tras una falsa neutralidad matemática, y las vulnerabilidades asociadas a la privacidad de los datos y el respeto por el trabajo intelectual ajeno.
