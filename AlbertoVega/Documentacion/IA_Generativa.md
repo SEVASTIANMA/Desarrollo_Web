@@ -35,3 +35,10 @@ La ausencia de una gobernanza de datos clara convierte el entusiasmo por la prod
 ## El rol del talento técnico frente al futuro del trabajo
 
 Ante este panorama, la respuesta no puede ser la prohibición ni el rechazo tecnofóbico. Intentar frenar el uso de la inteligencia artificial en las aulas o en las empresas es tan inútil como haber intentado prohibir el uso de hojas de cálculo o motores de búsqueda en décadas pasadas. La clave reside en transformar el enfoque de la formación profesional: pasar de enseñar simplemente a operar botones o redactar instrucciones básicas (prompts), a formar profesionales con criterio técnico, ético y analítico.
+
+En el contexto del SENA, donde se forma la fuerza productiva que impulsa la industria nacional, la apropiación de una IA responsable se traduce en prácticas concretas que todo aprendiz e instructor debe asumir en su ejercicio diario:
+
+* **Verificación sistemática (Human-in-the-loop):** Asumir que todo producto entregado por una IA es un borrador preliminar que requiere validación humana. Quien firma el código, el plano o el informe es el profesional, no el algoritmo; por ende, la responsabilidad civil, técnica y moral recae siempre sobre la persona.
+* **Higiene y protección de datos:** Establecer protocolos estrictos para anonimizar cualquier información antes de procesarla en herramientas externas, protegiendo tanto la intimidad de los ciudadanos como los activos intelectuales de las empresas.
+* **Transparencia y honestidad académica y laboral:** Declarar de manera abierta cuándo y cómo se han utilizado herramientas generativas en la elaboración de un proyecto, evitando presentar el procesamiento estadístico de una máquina como si fuera investigación o autoría original propia.
+* **Sostenibilidad y eficiencia:** Reconocer que cada consulta a un modelo generativo masivo implica un consumo energético e hídrico considerable en los centros de datos globales, por lo que su uso debe ser racional y orientado a tareas donde realmente aporte valor, no por simple pereza operativa.
