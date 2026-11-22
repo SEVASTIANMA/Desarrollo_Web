@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopa de Letras - Fundamentos de Física (Colores Únicos y Contrastados)</title>
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #131b2e;
+            --cell-bg: #1e293b;
+            --cell-hover: #334155;
+            --cell-selected: #2563eb;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Scrollbars personalizadas */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 25px 15px;
+            user-select: none;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .panels-container {
+            display: grid;
+            grid-template-columns: 260px auto 260px;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .card-panel {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .grid-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(14, 40px);
+            grid-template-rows: repeat(14, 40px);
+            gap: 5px;
+        }
+
+        .cell {
+            background-color: var(--cell-bg);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.1s, transform 0.1s;
+        }
+
+        .cell:hover {
+            background-color: var(--cell-hover);
+        }
+
+        .cell.selected {
+            background-color: var(--cell-selected);
+            color: white;
+            transform: scale(0.94);
+        }
+
+        .panel-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .stats-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 15px;
+            background-color: #0b0f19;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stats-box div {
+            font-size: 0.95rem;
+        }
+
+        #lbl-progreso {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        #lbl-tiempo {
+            color: var(--text-muted);
+        }
+
+        .word-list {
+            list-style: none;
+            overflow-y: auto;
+            max-height: 280px;
+            margin-bottom: 15px;
+            padding-right: 6px;
+        }
+
+        .word-item {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            padding: 6px 8px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .word-item.completed {
+            text-decoration: line-through;
+            font-weight: bold;
+        }
+
+        .btn-restart {
+            background-color: #dc2626;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-restart:hover {
+            background-color: #b91c1c;
+        }
+
+        .graphic-box {
+            background-color: #0b0f19;
+            border-radius: 8px;
+            padding: 8px;
+            height: 320px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 1px solid var(--border-color);
+            padding-right: 6px;
+        }
+
+        .graphic-item {
+            background-color: #1e293b;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 0.85rem;
+            text-align: center;
+            border-left: 3px solid var(--accent);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .graphic-item .symbol {
+            font-size: 1.4rem;
+            margin-bottom: 2px;
+        }
+
+        .graphic-item .word-name {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 2px;
+        }
+
+        .graphic-item .hint {
+            color: #94a3b8;
+            font-size: 0.75rem;
+        }
+
+        .def-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            display: none;
+            border-left: 5px solid #38bdf8;
+        }
+
+        .def-container h3 {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .def-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        .def-item {
+            background-color: #0b0f19;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .def-item p {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-top: 3px;
+            line-height: 1.4;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1100px) {
+            .panels-container {
+                grid-template-columns: 1fr;
+            }
+            .grid-container {
+                grid-template-columns: repeat(14, 32px);
+                grid-template-rows: repeat(14, 32px);
+            }
+            .cell {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>⚡ Sopa de Letras: Fundamentos de Física</h1>
+        <p>Encuentra las 10 palabras ocultas (cada una con un color único y contrastado)</p>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="panels-container">
+            
+            <div class="card-panel">
+                <div>
+                    <div class="panel-title">📋 Panel de Control</div>
+                    <div class="stats-box">
+                        <div id="lbl-progreso">Palabras: 0 / 10</div>
+                        <div id="lbl-tiempo">Tiempo: 00:00</div>
+                    </div>
+                    <div class="panel-title">Objetivos:</div>
+                    <ul class="word-list" id="word-list"></ul>
+                </div>
+                <div>
+                    <button class="btn-restart" onclick="iniciarJuego()">🔄 Nueva Partida</button>
+                </div>
+            </div>
+
+            <div class="grid-card">
+                <div class="grid-container" id="grid"></div>
+            </div>
+
+            <div class="card-panel">
+                <div>
+                    <div class="panel-title">🎨 Pistas Visuales</div>
+                    <div class="graphic-box" id="graphic-box">
+                        <div style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 90px; font-style: italic;">
+                            Las ilustraciones aparecerán aquí al descubrir cada concepto.
+                        </div>
+                    </div>
+                </div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
+                    💡 Arrastra el cursor al derecho o al revés.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="def-container" id="def-container">
+            <h3>📖 Historial de Definiciones Científicas</h3>
+            <div class="def-grid" id="def-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const BANCO_FISICA = {
+            "GRAVEDAD": { def: "Fuerza de atracción mutua entre los cuerpos debido a su masa. Nos atrae hacia el centro.", simbolo: "🍏⬇️🌍", pista: "Objeto cayendo" },
+            "FUERZA": { def: "Interacción capaz de cambiar el estado de reposo o movimiento de un objeto.", simbolo: "👉📦💨", pista: "Empujar o tirar" },
+            "ENERGIA": { def: "Capacidad de un sistema para realizar un trabajo o producir transformaciones.", simbolo: "⚡💡🔥", pista: "Capacidad de cambio" },
+            "TRABAJO": { def: "Magnitud física producto de la fuerza aplicada por el desplazamiento.", simbolo: "🏋️‍♂️➡️📐", pista: "Fuerza × Distancia" },
+            "MASA": { def: "Cantidad de materia que contiene un cuerpo. Medida de su inercia.", simbolo: "⚖️🧱📦", pista: "Cantidad de materia" },
+            "ACELERACION": { def: "Tasa de cambio de la velocidad de un objeto con respecto al tiempo.", simbolo: "🏎️💨📈", pista: "Cambio de velocidad" },
+            "INERCIA": { def: "Propiedad natural de los cuerpos de resistirse a cambiar su estado de movimiento.", simbolo: "🛑🛞🧍‍♂️", pista: "Resistencia al cambio" },
+            "POTENCIA": { def: "Cantidad de trabajo realizado por unidad de tiempo.", simbolo: "⏱️⚡⚙️", pista: "Trabajo en el tiempo" },
+            "PRESION": { def: "Fuerza aplicada de forma perpendicular por unidad de superficie.", simbolo: "📌🔨🎯", pista: "Fuerza sobre área" },
+            "VELOCIDAD": { def: "Desplazamiento realizado por un objeto por unidad de tiempo.", simbolo: "🏃‍♂️⏱️🧭", pista: "Espacio entre tiempo" },
+            "DENSIDAD": { def: "Magnitud que expresa la relación entre la masa y el volumen de un cuerpo.", simbolo: "🧊🚰⚖️", pista: "Masa por volumen" },
+            "CALOR": { def: "Energía transferida entre sistemas debido a diferencias de temperatura.", simbolo: "🔥🌡️🧊", pista: "Transferencia térmica" }
+        };
+
+        const SIZE = 14;
+        let PALABRAS = [];
+        let MATRIZ = [];
+        let seleccionActual = [];
+        let isMouseDown = false;
+        let celdasExitosas = new Set();
+        let encontradas = new Set();
+        let coloresAsignados = {};
+        let segundos = 0;
+        let timerInterval = null;
+        let juegoTerminado = false;
+
+        function seleccionarPalabrasAleatorias() {
+            let llaves = Object.keys(BANCO_FISICA);
+            let mezcladas = llaves.sort(() => 0.5 - Math.random());
+            PALABRAS = mezcladas.slice(0, 10);
+            
+            // Generador matemático de tonos HSL perfectamente equidistantes
+            coloresAsignados = {};
+            let pasoHue = 360 / PALABRAS.length;
+            // Desplazamiento aleatorio inicial para que los colores cambien en cada nueva partida
+            let offsetHue = Math.random() * 360; 
+
+            PALABRAS.forEach((palabra, index) => {
+                let hue = (offsetHue + (index * pasoHue)) % 360;
+                // Saturación al 85% y Luminosidad al 55% para garantizar colores vibrantes y legibles sobre fondo oscuro
+                coloresAsignados[palabra] = `hsl(${Math.round(hue)}, 85%, 55%)`;
+            });
+        }
+
+        function generarMatrizAleatoria() {
+            let grid = Array(SIZE).fill(null).map(() => Array(SIZE).fill(''));
+            const directions = [{r: 0, c: 1}, {r: 1, c: 0}];
+
+            for (let palabra of PALABRAS) {
+                let colocada = false;
+                let intentos = 0;
+                while (!colocada && intentos < 150) {
+                    intentos++;
+                    let dir = directions[Math.floor(Math.random() * directions.length)];
+                    let row = Math.floor(Math.random() * SIZE);
+                    let col = Math.floor(Math.random() * SIZE);
+
+                    let endRow = row + dir.r * (palabra.length - 1);
+                    let endCol = col + dir.c * (palabra.length - 1);
+
+                    if (endRow < SIZE && endCol < SIZE) {
+                        let puedeColocar = true;
+                        let tempRow = row;
+                        let tempCol = col;
+
+                        for (let i = 0; i < palabra.length; i++) {
+                            let letraActual = grid[tempRow][tempCol];
+                            if (letraActual !== '' && letraActual !== palabra[i]) {
+                                puedeColocar = false;
+                                break;
+                            }
+                            tempRow += dir.r;
+                            tempCol += dir.c;
+                        }
+
+                        if (puedeColocar) {
+                            tempRow = row;
+                            tempCol = col;
+                            for (let i = 0; i < palabra.length; i++) {
+                                grid[tempRow][tempCol] = palabra[i];
+                                tempRow += dir.r;
+                                tempCol += dir.c;
+                            }
+                            colocada = true;
+                        }
+                    }
+                }
+                if (!colocada) return generarMatrizAleatoria();
+            }
+
+            const letrasAlfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for (let r = 0; r < SIZE; r++) {
+                for (let c = 0; c < SIZE; c++) {
+                    if (grid[r][c] === '') {
+                        grid[r][c] = letrasAlfabeto[Math.floor(Math.random() * letrasAlfabeto.length)];
+                    }
+                }
+            }
+            return grid;
+        }
+
+        function iniciarJuego() {
+            seleccionarPalabrasAleatorias();
+            MATRIZ = generarMatrizAleatoria();
+            
+            const gridEl = document.getElementById('grid');
+            const wordListEl = document.getElementById('word-list');
+            
+            gridEl.innerHTML = '';
+            wordListEl.innerHTML = '';
+            
+            for (let r = 0; r < SIZE; r++) {
+                for (let c = 0; c < SIZE; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.textContent = MATRIZ[r][c];
+                    cell.dataset.row = r;
+                    cell.dataset.col = c;
+
+                    cell.addEventListener('mousedown', (e) => iniciarSeleccion(r, c, e));
+                    cell.addEventListener('mouseenter', () => continuarSeleccion(r, c));
+
+                    gridEl.appendChild(cell);
+                }
+            }
+
+            document.removeEventListener('mouseup', finalizarSeleccion);
+            document.addEventListener('mouseup', finalizarSeleccion);
+
+            PALABRAS.forEach(palabra => {
+                const li = document.createElement('li');
+                li.className = 'word-item';
+                li.id = `word-${palabra}`;
+                li.textContent = `• ${palabra}`;
+                wordListEl.appendChild(li);
+            });
+
+            seleccionActual = [];
+            celdasExitosas.clear();
+            encontradas.clear();
+            segundos = 0;
+            juegoTerminado = false;
+            
+            document.getElementById('def-container').style.display = 'none';
+            document.getElementById('def-list').innerHTML = '';
+            document.getElementById('graphic-box').innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 90px; font-style: italic;">Las ilustraciones aparecerán aquí al descubrir cada concepto.</div>';
+            document.getElementById('lbl-progreso').textContent = `Palabras: 0 / ${PALABRAS.length}`;
+
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (!juegoTerminado) {
+                    segundos++;
+                    let mins = String(Math.floor(segundos / 60)).padStart(2, '0');
+                    let segs = String(segundos % 60).padStart(2, '0');
+                    document.getElementById('lbl-tiempo').textContent = `Tiempo: ${mins}:${segs}`;
+                }
+            }, 1000);
+        }
+
+        function iniciarSeleccion(r, c, e) {
+            if (juegoTerminado) return;
+            isMouseDown = true;
+            limpiarSeleccionTemporal();
+            agregarCeldaSeleccionada(r, c);
+        }
+
+        function continuarSeleccion(r, c) {
+            if (!isMouseDown || juegoTerminado) return;
+            const yaExiste = seleccionActual.some(p => p.r === r && p.c === c);
+            if (!yaExiste) {
+                agregarCeldaSeleccionada(r, c);
+            }
+        }
+
+        function agregarCeldaSeleccionada(r, c) {
+            seleccionActual.push({ r, c });
+            const cell = document.querySelector(`[data-row='${r}'][data-col='${c}']`);
+            if (cell && !celdasExitosas.has(`${r},${c}`)) {
+                cell.classList.add('selected');
+            }
+        }
+
+        function finalizarSeleccion() {
+            if (!isMouseDown || juegoTerminado) return;
+            isMouseDown = false;
+            verificarSeleccion();
+        }
+
+        function limpiarSeleccionTemporal() {
+            seleccionActual = [];
+            document.querySelectorAll('.cell').forEach(cell => {
+                let r = cell.dataset.row;
+                let c = cell.dataset.col;
+                if (!celdasExitosas.has(`${r},${c}`)) {
+                    cell.classList.remove('selected');
+                }
+            });
+        }
+
+        function verificarSeleccion() {
+            if (seleccionActual.length === 0) return;
+
+            let letras = seleccionActual.map(p => MATRIZ[p.r][p.c]);
+            let palabraFormada = letras.join('');
+            let palabraInvertida = [...letras].reverse().join('');
+
+            let palabraValida = null;
+            if (PALABRAS.includes(palabraFormada) && !encontradas.has(palabraFormada)) {
+                palabraValida = palabraFormada;
+            } else if (PALABRAS.includes(palabraInvertida) && !encontradas.has(palabraInvertida)) {
+                palabraValida = palabraInvertida;
+            }
+
+            if (palabraValida) {
+                encontradas.add(palabraValida);
+                let colorAsignado = coloresAsignados[palabraValida];
+
+                seleccionActual.forEach(p => {
+                    celdasExitosas.add(`${p.r},${p.c}`);
+                    const cell = document.querySelector(`[data-row='${p.r}'][data-col='${p.c}']`);
+                    cell.classList.remove('selected');
+                    cell.style.backgroundColor = colorAsignado;
+                });
+
+                const wordLi = document.getElementById(`word-${palabraValida}`);
+                wordLi.classList.add('completed');
+                wordLi.style.color = colorAsignado;
+                wordLi.style.backgroundColor = colorAsignado + "22"; // Fondo translúcido sutil
+                wordLi.textContent = `✓ ${palabraValida}`;
+
+                document.getElementById('lbl-progreso').textContent = `Palabras: ${encontradas.size} / ${PALABRAS.length}`;
+                
+                agregarPistaGrafica(palabraValida, colorAsignado);
+                agregarDefinicionAlHistorial(palabraValida, colorAsignado);
+
+                if (encontradas.size === PALABRAS.length) {
+                    juegoTerminado = true;
+                    clearInterval(timerInterval);
+                    setTimeout(() => {
+                        alert(`¡Excelente! Has completado las 10 palabras de física en ${document.getElementById('lbl-tiempo').textContent.replace('Tiempo: ', '')}.`);
+                    }, 200);
+                }
+            } else {
+                limpiarSeleccionTemporal();
+            }
+            seleccionActual = [];
+        }
+
+        function agregarPistaGrafica(palabra, color) {
+            const graphicBox = document.getElementById('graphic-box');
+            if (encontradas.size === 1) {
+                graphicBox.innerHTML = '';
+            }
+
+            const info = BANCO_FISICA[palabra];
+            const item = document.createElement('div');
+            item.className = 'graphic-item';
+            item.style.borderLeftColor = color;
+            item.innerHTML = `
+                <div class="symbol">${info.simbolo}</div>
+                <div class="word-name" style="color: ${color};">${palabra}</div>
+                <div class="hint">${info.pista}</div>
+            `;
+            graphicBox.appendChild(item);
+        }
+
+        function agregarDefinicionAlHistorial(palabra, color) {
+            const container = document.getElementById('def-container');
+            container.style.borderLeftColor = color;
+            const list = document.getElementById('def-list');
+
+            const item = document.createElement('div');
+            item.className = 'def-item';
+            item.innerHTML = `<strong style="color: ${color};">[${palabra}]</strong><p>${BANCO_FISICA[palabra].def}</p>`;
+            
+            list.prepend(item);
+            container.style.display = 'block';
+        }
+
+        window.onload = iniciarJuego;
+    </script>
+</body>
+</html>
