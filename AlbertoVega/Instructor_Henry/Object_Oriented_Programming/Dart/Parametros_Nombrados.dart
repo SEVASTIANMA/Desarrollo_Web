@@ -14,7 +14,7 @@ class Computador{
   String? so;
   String? gpu;
   int? ram;
-  String? navegador
+  String? navegador;
   String? cpu;
   String? almacenamiento;
 
