@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laboratorio de las leyes de Newton</title>
+<style>
+:root{--bg:#f1f6fb;--ink:#0e2a47;--mut:#4a627a;--card:#ffffff;--line:#cfdce9;--acc:#2f8f00;--warm:#b36b00;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1f36;--ink:#f4f7fb;--mut:#9db4cc;--card:#12304f;--line:#24476b;--acc:#6fd01f;--warm:#ffb703;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1f36;--ink:#f4f7fb;--mut:#9db4cc;--card:#12304f;--line:#24476b;--acc:#6fd01f;--warm:#ffb703;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;line-height:1.45}
+main{max-width:760px;margin:0 auto;padding:18px 16px 40px}
+h1{font-size:clamp(24px,6vw,34px);margin:6px 0 4px}
+.sub{color:var(--mut);margin:0 0 14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tabs button{flex:1 1 140px;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.tabs button[aria-selected="true"]{border-color:var(--acc);background:var(--acc);color:#fff}
+canvas{width:100%;height:300px;display:block;border-radius:16px;background:#0e2a47}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:12px}
+.panel[hidden]{display:none}
+.panel h2{font-size:18px;margin:0 0 4px}
+.panel p{margin:4px 0 10px;color:var(--mut)}
+label{display:block;margin:10px 0;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--acc);margin-top:6px}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.btns button,.quiz button{padding:10px 16px;border-radius:12px;border:0;background:var(--acc);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.btns button.sec{background:transparent;color:var(--ink);border:2px solid var(--line)}
+button:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+.read{font-family:ui-monospace,Consolas,monospace;font-size:15px;background:var(--bg);border-radius:10px;padding:10px;margin-top:8px;min-height:3.4em}
+.msg{font-weight:700;color:var(--warm);margin:8px 0 0}
+.quiz{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.quiz b{display:block;margin-bottom:8px}
+.quiz button{background:transparent;color:var(--ink);border:2px solid var(--line);margin:0 6px 6px 0}
+.quiz button.ok{border-color:var(--acc);background:var(--acc);color:#fff}
+.quiz button.no{border-color:#c0392b;color:#c0392b}
+.ex{margin:4px 0 0;font-weight:700}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-top:8px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:8px 0 0;color:var(--mut)}
+h3{margin:24px 0 0;font-size:18px}
+footer{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+.logo{flex:none;width:72px;height:72px;border-radius:50%;background:#39a900;color:#fff;display:grid;place-items:center;font-weight:900;font-size:20px;letter-spacing:1px}
+footer p{margin:0;color:var(--mut)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<h1>Laboratorio de las leyes de Newton</h1>
+<p class="sub">Mueve los controles y mira qué pasa. Cada ley tiene su práctica y un reto.</p>
+
+<div class="tabs" role="tablist">
+<button role="tab" aria-selected="true">1ª ley · Inercia</button>
+<button role="tab" aria-selected="false">2ª ley · F = m · a</button>
+<button role="tab" aria-selected="false">3ª ley · Acción y reacción</button>
+</div>
+<canvas id="cv" aria-label="Simulación de física"></canvas>
+
+<section class="panel" id="p0">
+<h2>Un viaje en bus</h2>
+<p>Un cuerpo mantiene su reposo o su movimiento si ninguna fuerza neta actúa sobre él. Frena y acelera para ver cómo reacciona el pasajero.</p>
+<label>Velocidad inicial: <span id="v1v">12</span> m/s<input type="range" id="v1" min="5" max="20" value="12"></label>
+<label>Intensidad de frenado o aceleración: <span id="b1v">6</span> m/s²<input type="range" id="b1" min="2" max="12" value="6"></label>
+<div class="btns"><button id="brake">Frenar</button><button id="accel">Acelerar</button><button class="sec" id="free">Velocidad constante</button><button class="sec" id="rs1">Reiniciar</button></div>
+<div class="read" id="r1"></div><p class="msg" id="m1"></p>
+<div class="quiz"><b>Reto: el bus frena de golpe y no llevas cinturón. ¿Hacia dónde se va tu cuerpo?</b>
+<button>Hacia atrás</button><button data-ok="1">Hacia adelante</button><button>Se queda quieto respecto al bus</button>
+<p class="ex" hidden>Hacia adelante: por inercia tu cuerpo conserva la velocidad que traía.</p></div>
+</section>
+
+<section class="panel" id="p1" hidden>
+<h2>El carrito de mercado</h2>
+<p>La aceleración depende de la fuerza y de la masa: a = F / m. Empuja y compara.</p>
+<label>Fuerza: <span id="F2v">20</span> N<input type="range" id="F2" min="0" max="50" value="20"></label>
+<label>Masa del carrito: <span id="m2v">2</span> kg<input type="range" id="m2" min="1" max="10" step="0.5" value="2"></label>
+<div class="btns"><button id="push2">Empujar</button><button class="sec" id="rs2">Reiniciar</button></div>
+<div class="read" id="r2"></div>
+<div class="quiz"><b>Reto: misma fuerza y el doble de masa. La aceleración…</b>
+<button>Se duplica</button><button data-ok="1">Se reduce a la mitad</button><button>No cambia</button>
+<p class="ex" hidden>Se reduce a la mitad: a = F / m, así que más masa da menos aceleración.</p></div>
+</section>
+
+<section class="panel" id="p2" hidden>
+<h2>Dos patinadores</h2>
+<p>Cuando A empuja a B, B empuja a A con la misma fuerza y en sentido contrario. Cambia las masas y fíjate en las aceleraciones.</p>
+<label>Masa de A (verde): <span id="mAv">2</span> kg<input type="range" id="mA" min="1" max="10" step="0.5" value="2"></label>
+<label>Masa de B (amarillo): <span id="mBv">4</span> kg<input type="range" id="mB" min="1" max="10" step="0.5" value="4"></label>
+<div class="btns"><button id="push3">Empujar</button><button class="sec" id="rs3">Reiniciar</button></div>
+<div class="read" id="r3"></div>
+<div class="quiz"><b>Reto: dos patinadores se empujan y uno pesa el doble. ¿Quién sale con más velocidad?</b>
+<button data-ok="1">El más liviano</button><button>El más pesado</button><button>Los dos igual</button>
+<p class="ex" hidden>El más liviano: la fuerza es igual, pero con menos masa la aceleración es mayor.</p></div>
+</section>
+
+<h3>Conceptos clave</h3>
+<details><summary>Masa</summary><p>Cantidad de materia de un cuerpo. Mide su resistencia a cambiar de movimiento (kg).</p></details>
+<details><summary>Aceleración</summary><p>Rapidez con la que cambia la velocidad de un cuerpo (m/s²).</p></details>
+<details><summary>Inercia</summary><p>Tendencia de un cuerpo a mantener su reposo o su movimiento. La masa es su medida.</p></details>
+<details><summary>Acción y reacción</summary><p>La acción es la fuerza que un cuerpo ejerce sobre otro. La reacción es la fuerza igual y contraria que el segundo ejerce sobre el primero. Actúan sobre cuerpos distintos.</p></details>
+<details><summary>Mecánica clásica</summary><p>Rama de la física que describe el movimiento y las fuerzas a escalas y velocidades cotidianas. Se divide en cinemática, dinámica y estática.</p></details>
+<details><summary>¿Y el software?</summary><p>Videojuegos (Unity, Godot), sensores como el acelerómetro, robótica e IoT, y animaciones con rebote usan estas leyes. F = m · a se traduce directo a código: aceleracion = fuerza / masa.</p></details>
+
+<footer><div class="logo">SENA</div><p><b>Análisis y Desarrollo de Software</b><br>Gracias por explorar.</p></footer>
+</main>
+
+<script>
+const $=s=>document.querySelector(s),cv=$('#cv'),cx=cv.getContext('2d'),H=300,mod=(a,n)=>((a%n)+n)%n;
+const C={bg:'#0e2a47',gr:'#1b3f63',ln:'#5b7fa3',g:'#6fd01f',a:'#ffb703',w:'#f4f7fb'};
+let W=360,tab=0,s1,s2,s3;
+function size(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;W=r.width;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0)}
+function ln(a,b,c,d,w,col){cx.strokeStyle=col;cx.lineWidth=w;cx.lineCap='round';cx.beginPath();cx.moveTo(a,b);cx.lineTo(c,d);cx.stroke()}
+function rr(x,y,w,h,r,col){cx.fillStyle=col;cx.beginPath();cx.roundRect(x,y,w,h,r);cx.fill()}
+function ci(x,y,r,col){cx.fillStyle=col;cx.beginPath();cx.arc(x,y,r,0,7);cx.fill()}
+function txt(t,x,y,col,sz,al){cx.fillStyle=col;cx.font='700 '+(sz||13)+'px system-ui,sans-serif';cx.textAlign=al||'center';cx.fillText(t,x,y)}
+function arrow(x1,x2,y,col,lab){const d=Math.sign(x2-x1)||1;ln(x1,y,x2-d*10,y,6,col);cx.fillStyle=col;cx.beginPath();cx.moveTo(x2,y);cx.lineTo(x2-d*16,y-9);cx.lineTo(x2-d*16,y+9);cx.fill();txt(lab,(x1+x2)/2,y-12,col,13)}
+function person(x,y,lean,col,s,hx,hy){cx.save();cx.translate(x,y);cx.rotate(lean*Math.PI/180);cx.scale(s,s);
+ ln(-12,0,0,-56,9,col);ln(12,0,0,-56,9,col);ln(0,-56,0,-100,12,col);
+ if(hx==null){ln(0,-92,-18,-62,8,col);ln(0,-92,18,-62,8,col)}else{ln(0,-92,hx,hy,8,col);ln(0,-92,-hx*.3,-62,8,col)}
+ ci(0,-116,15,col);cx.restore()}
+function sky(){cx.fillStyle=C.bg;cx.fillRect(0,0,W,H)}
+
+/* Lab 1: inercia */
+function r1(){s1={v:+$('#v1').value,pos:0,mode:0,lean:0,lv:0}}
+function l1(dt){
+ const b=+$('#b1').value;let acc=s1.mode==1?-b:s1.mode==2?b:0;
+ const nv=Math.min(25,Math.max(0,s1.v+acc*dt));
+ if(nv===0&&acc<0){acc=0;s1.mode=0}
+ s1.v=nv;s1.pos+=nv*dt;
+ const tg=Math.max(-32,Math.min(32,-acc*3.2));
+ s1.lv+=((tg-s1.lean)*70-s1.lv*7)*dt;s1.lean+=s1.lv*dt;
+ sky();const gy=H-40;
+ for(let i=0;i<9;i++){const h=[90,150,70,170,110][i%5];rr(mod(i*130-s1.pos*8,1170)-150,gy-h,90,h,6,'#17395a')}
+ rr(0,gy,W,40,0,C.gr);
+ for(let i=0;i<9;i++)rr(mod(i*90-s1.pos*20,W+90)-90,gy+20,44,5,2,C.ln);
+ const bw=Math.min(300,W-30),bx=(W-bw)/2;
+ rr(bx,gy-170,bw,150,18,C.a);rr(bx+10,gy-158,bw-20,108,10,'#0a1f36');
+ ln(bx+24,gy-134,bx+bw-24,gy-134,4,'#7e94aa');
+ person(W/2,gy-50,s1.lean,C.w,.8);
+ rr(W/2-130,gy-160,10,100,3,C.a);rr(W/2+120,gy-160,10,100,3,C.a);
+ const ang=s1.pos*20/19;
+ [bx+55,bx+bw-55].forEach(x=>{ci(x,gy-18,19,'#0b0f16');ci(x,gy-18,8,'#78899b');ln(x-14*Math.cos(ang),gy-18-14*Math.sin(ang),x+14*Math.cos(ang),gy-18+14*Math.sin(ang),3,'#3c4a5a')});
+ $('#r1').textContent='v = '+s1.v.toFixed(1)+' m/s    a = '+acc.toFixed(1)+' m/s²';
+ $('#m1').textContent=s1.mode==1?'Frenas: el bus se detiene, pero tu cuerpo sigue hacia adelante.':s1.mode==2?'Aceleras: tu cuerpo se queda atrás.':s1.v>0?'Velocidad constante: sin fuerza neta no hay cambio de movimiento.':'En reposo: un cuerpo quieto sigue quieto.';
+}
+
+/* Lab 2: F = m a */
+function r2(){s2={x:0,v:0,on:0}}
+function l2(dt){
+ const F=+$('#F2').value,m=+$('#m2').value,a=F/m;
+ if(s2.on){s2.v+=a*dt;s2.x+=s2.v*dt;if(s2.x>=10){s2.x=10;s2.on=0}}
+ sky();const gy=H-40;rr(0,gy,W,40,0,C.gr);
+ const px=110+s2.x/10*(W-200);
+ ln(W-60,gy-110,W-60,gy,4,C.a);txt('Meta',W-60,gy-118,C.a,13);
+ const n=Math.min(5,Math.ceil(m/2));
+ cx.save();cx.translate(px,gy-14);cx.scale(1.2,1.2);
+ cx.fillStyle='#c8d6e6';cx.beginPath();cx.moveTo(-50,-70);cx.lineTo(50,-70);cx.lineTo(38,-28);cx.lineTo(-38,-28);cx.fill();
+ ln(-50,-70,-72,-100,6,'#c8d6e6');ln(-84,-100,-64,-100,7,'#c8d6e6');
+ ci(-26,-14,13,'#1e2a3a');ci(26,-14,13,'#1e2a3a');
+ for(let i=0;i<n;i++)rr(-44+(i%2)*46,-70-Math.floor(i/2)*38-38,42,36,4,'#c4905a');
+ cx.restore();
+ if(F>0){const len=Math.min(20+F*2.4,px-100);if(len>20)arrow(px-86-len,px-86,gy-120,C.g,'F = '+F+' N')}
+ $('#r2').textContent='a = F / m = '+F+' / '+m+' = '+a.toFixed(1)+' m/s²\nv = '+s2.v.toFixed(1)+' m/s    x = '+s2.x.toFixed(1)+' m';
+}
+
+/* Lab 3: acción y reacción */
+const K=18,FO=40;
+function r3(){s3={xA:-1.7,xB:1.7,vA:0,vB:0,t:-1}}
+function l3(dt){
+ const mA=+$('#mA').value,mB=+$('#mB').value;
+ if(s3.t>=0){if(s3.t<.25){s3.vA-=FO/mA*dt;s3.vB+=FO/mB*dt}s3.t+=dt}
+ const f=Math.exp(-1.6*dt);s3.vA*=f;s3.vB*=f;
+ s3.xA=Math.max(-W/2/K+1.6,s3.xA+s3.vA*dt);s3.xB=Math.min(W/2/K-1.6,s3.xB+s3.vB*dt);
+ sky();const gy=H-40,ax=W/2+s3.xA*K,bx=W/2+s3.xB*K;rr(0,gy,W,40,0,C.gr);
+ const sa=.6+.05*mA,sb=.6+.05*mB,hx=s3.t<0?32:s3.t<.3?32:14;
+ person(ax,gy,0,C.g,sa,hx,-70);person(bx,gy,0,C.a,sb,-hx,-70);
+ if(s3.t>=0&&s3.t<1.6){arrow(ax+20,ax-70,70,C.g,'Reacción');arrow(bx-20,bx+70,70,C.a,'Acción')}
+ $('#r3').textContent='Fuerza sobre cada uno: '+FO+' N (igual)\naA = '+FO+' / '+mA+' = '+(FO/mA).toFixed(1)+' m/s²    aB = '+FO+' / '+mB+' = '+(FO/mB).toFixed(1)+' m/s²';
+}
+
+const labs=[l1,l2,l3],resets=[r1,r2,r3];
+document.querySelectorAll('.tabs button').forEach((b,i)=>b.onclick=()=>{
+ tab=i;document.querySelectorAll('.tabs button').forEach((x,j)=>x.setAttribute('aria-selected',j==i));
+ [0,1,2].forEach(j=>$('#p'+j).hidden=j!=i);resets[i]()});
+document.querySelectorAll('input[type=range]').forEach(i=>i.oninput=()=>{$('#'+i.id+'v').textContent=i.value;if(i.id=='v1'&&s1.mode==0)s1.v=+i.value});
+$('#brake').onclick=()=>s1.mode=1;$('#accel').onclick=()=>s1.mode=2;$('#free').onclick=()=>s1.mode=0;$('#rs1').onclick=r1;
+$('#push2').onclick=()=>{if(s2.x<10)s2.on=1};$('#rs2').onclick=r2;
+$('#push3').onclick=()=>{if(s3.t<0)s3.t=0};$('#rs3').onclick=r3;
+document.querySelectorAll('.quiz').forEach(q=>q.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+ q.querySelectorAll('button').forEach(x=>x.className='');b.className=b.dataset.ok?'ok':'no';q.querySelector('.ex').hidden=!b.dataset.ok}));
+addEventListener('resize',size);size();r1();r2();r3();
+let last=performance.now();
+function loop(n){const dt=Math.min(.05,(n-last)/1000);last=n;labs[tab](dt);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+$('#r2').style.whiteSpace=$('#r3').style.whiteSpace='pre-line';
+</script>
+</body>
+</html>
