@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartStock Colombia — Modelo de Negocio Canvas</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-2: #0b1120;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #10b981;
+      --accent-2: #38bdf8;
+      --border: rgba(148, 163, 184, 0.2);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .brand span.badge {
+      background: rgba(16, 185, 129, 0.16);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    select, button {
+      font-family: inherit;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    button:hover:not(:disabled), select:hover {
+      background: #283548;
+      border-color: rgba(148, 163, 184, 0.45);
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    button.primary {
+      background: var(--accent);
+      color: #052e16;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    button.primary:hover:not(:disabled) {
+      background: #34d399;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1160px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-kicker {
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 3vw, 2.35rem);
+      line-height: 1.2;
+      margin-bottom: 0.65rem;
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .card h3 {
+      font-size: 0.92rem;
+      color: var(--accent-2);
+      margin-bottom: 0.6rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      line-height: 1.5;
+      color: #e2e8f0;
+    }
+
+    .two-col-names {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      gap: 0.35rem 1rem;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .two-col-names li::before {
+      content: "• ";
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Lienzo Canvas 9 bloques */
+    .canvas-board {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .canvas-tile {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 125px;
+      transition: transform 0.12s ease, border-color 0.15s ease;
+    }
+
+    .canvas-tile:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .canvas-tile .num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .canvas-tile .title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .canvas-tile .preview {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    /* Posicionamiento clásico en escritorio */
+    @media (min-width: 860px) {
+      .tile-8 { grid-column: span 2; grid-row: span 2; } /* Asociaciones Claves */
+      .tile-7 { grid-column: span 2; } /* Actividades Claves */
+      .tile-6 { grid-column: span 2; } /* Recursos Claves */
+      .tile-2 { grid-column: span 2; grid-row: span 2; } /* Propuesta de Valor */
+      .tile-4 { grid-column: span 2; } /* Relaciones con Clientes */
+      .tile-3 { grid-column: span 2; } /* Canales */
+      .tile-1 { grid-column: span 2; grid-row: span 2; } /* Segmentos de Clientes */
+      .tile-9 { grid-column: span 5; } /* Estructura de Costos */
+      .tile-5 { grid-column: span 5; } /* Fuentes de Ingresos */
+    }
+
+    @media (max-width: 859px) {
+      .canvas-tile { grid-column: span 5; }
+    }
+
+    @media (max-width: 560px) {
+      .canvas-tile { grid-column: span 10; }
+      .slide { padding: 1.25rem; }
+    }
+
+    .block-banner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--surface-2);
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    td.highlight {
+      background: rgba(16, 185, 129, 0.08);
+      font-weight: 600;
+      color: #ecfdf5;
+    }
+
+    footer {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .progress {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span>SmartStock Colombia</span>
+      <span class="badge">Modelo Canvas</span>
+    </div>
+
+    <div class="top-nav">
+      <label for="slideSelect" class="progress">Ir a:</label>
+      <select id="slideSelect" aria-label="Seleccionar diapositiva">
+        <option value="0">1. Portada</option>
+        <option value="1">2. Lienzo Canvas (9 Bloques)</option>
+        <option value="2">3. Bloque 1: Segmentos de Clientes</option>
+        <option value="3">4. Bloque 2: Propuesta de Valor</option>
+        <option value="4">5. Bloque 3: Canales</option>
+        <option value="5">6. Bloque 4: Relaciones con Clientes</option>
+        <option value="6">7. Bloque 5: Fuentes de Ingresos</option>
+        <option value="7">8. Bloque 6: Recursos Claves</option>
+        <option value="8">9. Bloque 7: Actividades Claves</option>
+        <option value="9">10. Bloque 8: Asociaciones Claves</option>
+        <option value="10">11. Bloque 9: Estructura de Costos</option>
+        <option value="11">12. Comparativa vs. Competencia</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <!-- DIAPOSITIVA 1: PORTADA -->
+    <section class="slide active" data-slide="0">
+      <div class="slide-kicker">Software Inteligente para Tiendas de Barrio y Minimarkets</div>
+      <h1>SmartStock Colombia</h1>
+      <p class="subtitle">
+        Es una aplicación ultra fácil de usar desde el celular que ayuda a los tenderos de barrio a controlar sus productos, evitar pérdidas por vencimiento y saber exactamente cuánto dinero ganan día a día con la ayuda de la Inteligencia Artificial.[cite: 1]
+      </p>
+
+      <div class="meta-grid">
+        <div class="card">
+          <h3>Emprendedores (Orden alfabético)</h3>
+          <ul class="two-col-names">
+            <li>Alberto Vega</li>
+            <li>Elias Calderon</li>
+            <li>Elias Ponce</li>
+            <li>Jarid Osorio</li>
+            <li>Jhon SanJuan</li>
+            <li>Sevastian Macias</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Información del Proyecto</h3>
+          <ul>
+            <li><strong>Programa:</strong> Tecnólogo en ADSO (SENA)[cite: 1]</li>
+            <li><strong>Fecha:</strong> 28 de agosto de 2026[cite: 1]</li>
+            <li><strong>Ubicación:</strong> Barranquilla, Atlántico[cite: 1]</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 2: LIENZO CANVAS DE 9 BLOQUES -->
+    <section class="slide" data-slide="1">
+      <div class="slide-kicker">Vista General Interactiva</div>
+      <h2>Lienzo del Modelo Canvas — 9 Bloques</h2>
+      <p class="subtitle">
+        Haz clic en cualquiera de los 9 bloques para ir directamente a su diapositiva detallada.[cite: 1, 2, 3]
+      </p>
+
+      <div class="canvas-board">
+        <button type="button" class="canvas-tile tile-8" onclick="goToSlide(9)">
+          <div>
+            <div class="num">BLOQUE 8</div>
+            <div class="title">Asociaciones Claves</div>
+            <div class="preview">AWS, Google Cloud, modelos de IA, pasarelas de pago y gremios.[cite: 2]</div>
+          </div>
+        </button>
+
+        <button type="button" class="canvas-tile tile-7" onclick="goToSlide(8)">
+          <div>
+            <div class="num">BLOQUE 7</div>
+            <div class="title">Actividades Claves</div>
+            <div class="preview">Sprints de 2 semanas, microservicios y lanzamiento en 3 pasos.[cite: 2]</div>
+          </div>
+        </button>
+
+        <button type="button" class="canvas-tile tile-2" onclick="goToSlide(3)">
+          <div>
+            <div class="num">BLOQUE 2</div>
+            <div class="title">Propuesta de Valor</div>
+            <div class="preview">Offline-first, escáner con cámara, predicción (85%) y alertas.[cite: 1, 3]</div>
+          </div>
+        </button>
+
+        <button type="button" class="canvas-tile tile-4" onclick="goToSlide(5)">
+          <div>
+            <div class="num">BLOQUE 4</div>
+            <div class="title">Relaciones con Clientes</div>
+            <div class="preview">Soporte por WhatsApp real, plan gratuito y reportes nocturnos.[cite: 1, 2, 3]</div>
+          </div>
+        </button>
+
+        <button type="button" class="canvas-tile tile-1" onclick="goToSlide(2)">
+          <div>
+            <div class="num">BLOQUE 1</div>
+            <div class="title">Segmentos de Clientes</div>
+            <div class="preview">Tiendas, minimarkets y comercios populares (25–55 años) en Colombia.[cite: 1]</div>
+          </div>
+        </button>
+
+        <button type="button" class="canvas-tile tile-6" onclick="goToSlide(7)">
+          <div>
+            <div class="num">BLOQUE 6</div>
+            <div class="title">Recursos Claves</div>
+            <div class="preview">Nube, IA local, Nequi/Daviplata/Bold/Mercado Pago y equipo de 5.[cite: 1, 2]</div>
+          </div>
+        </button>
+
+        <button type="button" class="canvas-tile tile-3" onclick="goToSlide(4)">
+          <div>
+            <div class="num">BLOQUE 3</div>
+            <div class="title">Canales</div>
+            <div class="preview">Visitas en barrios, redes sociales, Cámara de Comercio y referidos.[cite: 1, 2]</div>
+          </div>
+        </button>
+
+        <button type="button" class="canvas-tile tile-9" onclick="goToSlide(10)">
+          <div>
+            <div class="num">BLOQUE 9</div>
+            <div class="title">Estructura de Costos</div>
+            <div class="preview">Nube, IA, equipo de 5 personas, equipos de prueba y operación.[cite: 2]</div>
+          </div>
+        </button>
+
+        <button type="button" class="canvas-tile tile-5" onclick="goToSlide(6)">
+          <div>
+            <div class="num">BLOQUE 5</div>
+            <div class="title">Fuentes de Ingresos</div>
+            <div class="preview">Freemium: plan básico gratuito ($0) y plan completo ($29.900 COP).[cite: 1, 3]</div>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 3: BLOQUE 1 - SEGMENTOS DE CLIENTES -->
+    <section class="slide" data-slide="2">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 1 de 9</div>
+          <h2>Segmentos de Clientes</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="card">
+        <ul>
+          <li><strong>Perfil principal:</strong> Dueños de tiendas de barrio, minimarkets, pequeñas droguerías, peluquerías, cafeterías y restaurantes familiares.[cite: 1]</li>
+          <li><strong>Edad y conocimientos:</strong> Personas entre 25 y 55 años que usan celulares Android y WhatsApp a diario, pero no manejan sistemas contables complejos.[cite: 1]</li>
+          <li><strong>Paso a paso geográfico:</strong> Inicio en el área metropolitana de Barranquilla (Soledad, Malambo) y la Costa (Cartagena, Santa Marta), para luego llegar a Medellín, Cali y Bogotá.[cite: 1]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 4: BLOQUE 2 - PROPUESTA DE VALOR -->
+    <section class="slide" data-slide="3">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 2 de 9</div>
+          <h2>Propuesta de Valor</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="meta-grid">
+        <div class="card">
+          <h3>Problema y Enfoque</h3>
+          <ul>
+            <li>El 73% de los tenderos lleva sus cuentas anotadas en libretas de papel o en la memoria.[cite: 2]</li>
+            <li>Consecuencias graves: pérdida constante de dinero por alimentos que se vencen y falta de mercancía clave en fechas importantes.[cite: 2]</li>
+            <li>Democratizar la tecnología con un sistema accesible, económico y fácil de usar (se aprende en 15 minutos y está 100% adaptado al celular).[cite: 3]</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Beneficios y Tecnología</h3>
+          <ul>
+            <li><strong>Gana más dinero:</strong> Reduce hasta en un 30% las pérdidas por mercancía vencida.[cite: 3]</li>
+            <li><strong>Alertas automáticas:</strong> Avisa al celular qué productos están próximos a vencer o acabarse.[cite: 3]</li>
+            <li><strong>Predicción de ventas (85% de precisión):</strong> Indica cuántas bebidas, granos o productos comprar según la época (Navidad, Semana Santa, festivos).[cite: 3]</li>
+            <li><strong>Resumen por WhatsApp:</strong> Envía todas las noches el reporte diario de ventas directamente al chat personal.[cite: 3]</li>
+            <li><strong>Historial para préstamos:</strong> Ayuda a registrar ventas para demostrar ingresos ante bancos y solicitar microcréditos futuros.[cite: 3]</li>
+            <li><strong>Funciona sin Internet (Offline-first):</strong> Si se cae la señal o los datos, sigue trabajando y guarda/sincroniza al volver la conexión.[cite: 1, 3]</li>
+            <li><strong>Escáner rápido con la cámara:</strong> Registra mercancía tomando fotos a facturas o códigos de barras en segundos.[cite: 1, 3]</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 5: BLOQUE 3 - CANALES -->
+    <section class="slide" data-slide="4">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 3 de 9</div>
+          <h2>Canales</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="card">
+        <ul>
+          <li><strong>Visita directa en los barrios:</strong> Asesores del equipo irán tienda por tienda mostrando el funcionamiento de la app.[cite: 1]</li>
+          <li><strong>Redes sociales y educación:</strong> Videos cortos y entretenidos en TikTok, Facebook e Instagram sobre cómo administrar mejor una tienda.[cite: 1]</li>
+          <li><strong>Alianzas estratégicas:</strong> Capacitaciones gratuitas junto a la Cámara de Comercio de Barranquilla y gremios de tenderos.[cite: 2]</li>
+          <li><strong>Programa "Tendero invita a Tendero":</strong> Si un usuario invita a otro tendero a usar la app, ambos reciben 1 mes gratis del servicio premium.[cite: 2]</li>
+          <li><strong>Soporte por WhatsApp:</strong> Canal de atención humano, rápido y por chat para resolver dudas sin complicaciones.[cite: 2]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 6: BLOQUE 4 - RELACIONES CON CLIENTES -->
+    <section class="slide" data-slide="5">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 4 de 9</div>
+          <h2>Relaciones con Clientes</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="card">
+        <ul>
+          <li>Soporte por WhatsApp: atención humana, rápida y por chat para resolver dudas sin complicaciones.[cite: 2, 3]</li>
+          <li>Modelo Freemium con versión inicial totalmente gratuita para comenzar sin barreras.[cite: 1]</li>
+          <li>Seguimiento nocturno mediante el resumen diario de ventas enviado al chat personal de WhatsApp.[cite: 3]</li>
+          <li>Contenidos educativos en TikTok, Facebook e Instagram y capacitaciones gratuitas con aliados.[cite: 1, 2]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 7: BLOQUE 5 - FUENTES DE INGRESOS -->
+    <section class="slide" data-slide="6">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 5 de 9</div>
+          <h2>Fuentes de Ingresos</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="card">
+        <ul>
+          <li><strong>Modelo Freemium:</strong> Una versión inicial totalmente gratuita (<strong>$0</strong> Básico) y un plan completo con mensualidad muy económica de <strong>$29.900 COP</strong> (Premium).[cite: 1, 3]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 8: BLOQUE 6 - RECURSOS CLAVES -->
+    <section class="slide" data-slide="7">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 6 de 9</div>
+          <h2>Recursos Claves</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="meta-grid">
+        <div class="card">
+          <h3>Tecnología e Insumos</h3>
+          <ul>
+            <li><strong>Servidores en la nube:</strong> Infraestructura segura en Amazon (AWS) y Google Cloud.[cite: 2]</li>
+            <li><strong>Inteligencia Artificial (IA) local:</strong> Entrenada para entender el lenguaje, las facturas y los productos que se venden en Colombia, y predecir ventas.[cite: 1, 2]</li>
+            <li><strong>Pasarelas de pago colombianas:</strong> Integración directa con Nequi, Daviplata, Bold y Mercado Pago.[cite: 2]</li>
+            <li><strong>Equipos de prueba:</strong> Celulares sencillos y computadores de gama media para verificar que la app funcione veloz en cualquier teléfono.[cite: 2]</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>El Equipo de 5 Personas</h3>
+          <ul>
+            <li><strong>1. Líder Técnico:</strong> El capitán del sistema.[cite: 2]</li>
+            <li><strong>2. Programador Mobile:</strong> Construye la app del celular.[cite: 2]</li>
+            <li><strong>3. Ingeniero de IA:</strong> Entrena la inteligencia artificial.[cite: 2]</li>
+            <li><strong>4. Diseñador UI/UX:</strong> Diseña las pantallas bonitas y fáciles.[cite: 2]</li>
+            <li><strong>5. Encargado de Marketing y Ventas:</strong> Consigue los clientes y alianzas.[cite: 2]</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 9: BLOQUE 7 - ACTIVIDADES CLAVES -->
+    <section class="slide" data-slide="8">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 7 de 9</div>
+          <h2>Actividades Claves</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="card">
+        <ul>
+          <li><strong>Trabajo en bloques (Sprints de 2 semanas):</strong> Avanzamos paso a paso entregando mejoras probadas cada quince días.[cite: 2]</li>
+          <li><strong>Tecnología moderna y eficiente:</strong> Un solo código para Android e iOS, y sistemas organizados en "cajitas" (microservicios) para que la app nunca se caiga.[cite: 2]</li>
+          <li><strong>Lanzamiento en 3 pasos:</strong> Primero un producto básico funcional (MVP) a los 3 meses → Pruebas reales en tiendas de Barranquilla → Lanzamiento oficial.[cite: 2]</li>
+          <li><strong>Gestión comercial y operativa:</strong> Visitas tienda por tienda, redes sociales, capacitaciones y soporte por WhatsApp.[cite: 1, 2]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 10: BLOQUE 8 - ASOCIACIONES CLAVES -->
+    <section class="slide" data-slide="9">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 8 de 9</div>
+          <h2>Asociaciones Claves</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="card">
+        <ul>
+          <li><strong>Servidores en la nube:</strong> Amazon (AWS) y Google Cloud.[cite: 2]</li>
+          <li><strong>Herramientas de Inteligencia Artificial:</strong> Modelos avanzados de IA que ayudan a calcular y predecir las ventas.[cite: 2]</li>
+          <li><strong>Pasarelas de pago colombianas:</strong> Nequi, Daviplata, Bold y Mercado Pago.[cite: 2]</li>
+          <li><strong>Alianzas estratégicas:</strong> Cámara de Comercio de Barranquilla y gremios de tenderos.[cite: 2]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 11: BLOQUE 9 - ESTRUCTURA DE COSTOS -->
+    <section class="slide" data-slide="10">
+      <div class="block-banner">
+        <div>
+          <div class="slide-kicker">Bloque 9 de 9</div>
+          <h2>Estructura de Costos</h2>
+        </div>
+        <button type="button" onclick="goToSlide(1)">← Volver al Lienzo</button>
+      </div>
+      <div class="card">
+        <ul>
+          <li>Infraestructura y servidores en la nube (Amazon AWS y Google Cloud).[cite: 2]</li>
+          <li>Herramientas y modelos avanzados de Inteligencia Artificial.[cite: 2]</li>
+          <li>Desarrollo y mantenimiento tecnológico del equipo de 5 personas.[cite: 2]</li>
+          <li>Equipos de prueba (celulares sencillos y computadores de gama media).[cite: 2]</li>
+          <li>Operación comercial, marketing, capacitaciones y asesores de visitas en los barrios.[cite: 1, 2]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DIAPOSITIVA 12: COMPARATIVA VS COMPETENCIA -->
+    <section class="slide" data-slide="11">
+      <div class="slide-kicker">Diferenciales frente a la Competencia</div>
+      <h2>¿Por qué somos superiores a la competencia?</h2>
+      <p class="subtitle">Comparación directa según el documento de SmartStock Colombia.[cite: 3]</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>Cuaderno / Excel</th>
+              <th>Software Tradicional</th>
+              <th>SmartStock Colombia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Facilidad de uso</strong></td>
+              <td>Requiere mucho tiempo[cite: 3]</td>
+              <td>Muy difícil / Complejo[cite: 3]</td>
+              <td class="highlight">Se aprende en 15 minutos[cite: 3]</td>
+            </tr>
+            <tr>
+              <td><strong>Diseñado para celular</strong></td>
+              <td>No es cómodo[cite: 3]</td>
+              <td>Limitado[cite: 3]</td>
+              <td class="highlight">100% adaptado al celular[cite: 3]</td>
+            </tr>
+            <tr>
+              <td><strong>Funciona sin Internet</strong></td>
+              <td>Sí[cite: 3]</td>
+              <td>No[cite: 3]</td>
+              <td class="highlight">Sí (guarda y sincroniza)[cite: 3]</td>
+            </tr>
+            <tr>
+              <td><strong>Lector de facturas</strong></td>
+              <td>Manual[cite: 3]</td>
+              <td>No incluye[cite: 3]</td>
+              <td class="highlight">Sí (escáner con fotos)[cite: 3]</td>
+            </tr>
+            <tr>
+              <td><strong>Soporte al cliente</strong></td>
+              <td>No existe[cite: 3]</td>
+              <td>Lento / Por correo[cite: 3]</td>
+              <td class="highlight">Directo por WhatsApp real[cite: 3]</td>
+            </tr>
+            <tr>
+              <td><strong>Precio mensual</strong></td>
+              <td>Gratis[cite: 3]</td>
+              <td>$80.000-$300.000 COP[cite: 3]</td>
+              <td class="highlight">$0 (Básico) / $29.900 (Premium)[cite: 3]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <button type="button" id="prevBtn" onclick="prevSlide()">← Anterior</button>
+    <div class="progress" id="progressText">Diapositiva 1 de 12</div>
+    <button type="button" class="primary" id="nextBtn" onclick="nextSlide()">Siguiente →</button>
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const slideSelect = document.getElementById("slideSelect");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const progressText = document.getElementById("progressText");
+    let currentIndex = 0;
+
+    function renderSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      currentIndex = index;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === currentIndex);
+      });
+
+      slideSelect.value = String(currentIndex);
+      progressText.textContent = `Diapositiva ${currentIndex + 1} de ${slides.length}`;
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === slides.length - 1;
+    }
+
+    function goToSlide(index) {
+      renderSlide(index);
+    }
+
+    function nextSlide() {
+      renderSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      renderSlide(currentIndex - 1);
+    }
+
+    slideSelect.addEventListener("change", (e) => {
+      renderSlide(Number(e.target.value));
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") nextSlide();
+      if (e.key === "ArrowLeft") prevSlide();
+    });
+
+    renderSlide(0);
+  </script>
+</body>
+</html>
