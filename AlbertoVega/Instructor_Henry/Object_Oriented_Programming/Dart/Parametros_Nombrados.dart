@@ -12,4 +12,10 @@ class Computador{
   String? cpu;
   String? almacenamiento;
 
+  Computador({required String g, required int r, required String c, required String a}){
+    this.gpu = g;
+    this.ram = r;
+    this.cpu = c;
+    this.almacenamiento = a;
+  }
 }
