@@ -12,4 +12,11 @@ class Computador {
     public String mouse;
     public String so;
     public String navegador;
+
+    Computador(String a, String g, String c, int ram){
+        this.almacenamiento = a;
+        this.gpu = g;
+        this.cpu = c;
+        this.ram = ram;
+    }
 }
